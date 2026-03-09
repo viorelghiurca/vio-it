@@ -506,6 +506,10 @@ npm run lint      # ESLint ausführen
 
 **VIO-IT · Viorel Ghiurca · IHK-geprüfter Fachinformatiker**
 
-[it.ghiurcaviorel.de](https://it.ghiurcaviorel.de) · [mail@viorelghiurca.de](mailto:mail@viorelghiurca.de) · Made in Germany 🇩🇪
+[it.ghiurcaviorel.de](https://it.ghiurcaviorel.de) · [viorelghiurca.de](https://www.viorelghiurca.de) · [mail@viorelghiurca.de](mailto:mail@viorelghiurca.de)
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/viorelghiurca)
+
+Made in Germany 🇩🇪
 
 </div>
