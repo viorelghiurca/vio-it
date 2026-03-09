@@ -77,7 +77,8 @@ export default function DatenschutzPage() {
               <LegalSection title="5. Speicherung und Aufbewahrungsfristen">
                 <p className="mb-3">
                   Ihre Daten werden in Firebase (Google Ireland Limited) gespeichert. Die Datenverarbeitung
-                  erfolgt in EU-Rechenzentren. Eine Weitergabe an sonstige Dritte erfolgt nicht,
+                  erfolgt in einem Rechenzentrum in Deutschland (Standort: europe-west3, Frankfurt).
+                  Eine Weitergabe an sonstige Dritte erfolgt nicht,
                   es sei denn, dies ist zur Vertragserfüllung erforderlich oder Sie haben ausdrücklich eingewilligt.
                 </p>
                 <p className="mb-3">Wir löschen Ihre personenbezogenen Daten, sobald der Zweck der Speicherung entfällt:</p>
@@ -99,6 +100,7 @@ export default function DatenschutzPage() {
                 <p>
                   Wir nutzen Firebase Firestore zur Speicherung von Kontaktanfragen und Terminbuchungen sowie
                   Firebase Analytics (nur nach Ihrer Einwilligung) zur anonymisierten Nutzungsanalyse.
+                  Die Daten werden in einem Google-Rechenzentrum in Deutschland (Region europe-west3, Frankfurt am Main) gespeichert.
                   Die Datenverarbeitung erfolgt auf Grundlage eines Auftragsverarbeitungsvertrags (AVV) mit Google.
                   Google Ireland Limited hat seinen Sitz in der EU. Soweit eine Datenübermittlung in die USA stattfindet,
                   erfolgt diese auf Basis des EU-US Data Privacy Frameworks (Angemessenheitsbeschluss der EU-Kommission vom 10. Juli 2023).
