@@ -1,4 +1,7 @@
-import { collection, addDoc, serverTimestamp, query, orderBy, getDocs, where, doc, getDoc, updateDoc } from 'firebase/firestore'
+import {
+  collection, addDoc, setDoc, deleteDoc, serverTimestamp,
+  query, orderBy, getDocs, doc, getDoc, updateDoc,
+} from 'firebase/firestore'
 import { db } from './firebase'
 
 // ── Kontaktanfragen ──────────────────────────────────────────────────────────
@@ -19,8 +22,8 @@ export async function saveContactRequest(data) {
 // ── Terminbuchungen ──────────────────────────────────────────────────────────
 
 /**
- * Speichert eine Terminbuchung in Firestore.
- * @param {{ name: string, firma?: string, email: string, telefon?: string, terminArt: string, datum: string, uhrzeit: string, anliegen?: string }} data
+ * Speichert eine Terminbuchung in Firestore und erstellt gleichzeitig
+ * einen öffentlich lesbaren Slot in `belegteSlots` (ohne personenbezogene Daten).
  */
 export async function saveAppointment(data) {
   const docRef = await addDoc(collection(db, 'terminbuchungen'), {
@@ -28,6 +31,14 @@ export async function saveAppointment(data) {
     status: 'ausstehend',
     createdAt: serverTimestamp(),
   })
+
+  const slotId = `${data.datum}_${data.uhrzeit}`
+  await setDoc(doc(db, 'belegteSlots', slotId), {
+    datum: data.datum,
+    uhrzeit: data.uhrzeit,
+    bookingId: docRef.id,
+  })
+
   return docRef.id
 }
 
@@ -40,28 +51,33 @@ export async function getAppointmentById(id) {
 }
 
 // ── Termin stornieren ─────────────────────────────────────────────────────────
-export async function cancelAppointment(id) {
+
+/**
+ * Markiert den Termin als storniert und entfernt den zugehörigen Slot
+ * aus der öffentlichen `belegteSlots`-Collection.
+ */
+export async function cancelAppointment(id, { datum, uhrzeit } = {}) {
   const docRef = doc(db, 'terminbuchungen', id)
   await updateDoc(docRef, { status: 'storniert', cancelledAt: serverTimestamp() })
-}
 
-// ── Admin: Alle Buchungen abrufen ─────────────────────────────────────────────
-export async function getAppointments() {
-  const q = query(collection(db, 'terminbuchungen'), orderBy('createdAt', 'desc'))
-  const snapshot = await getDocs(q)
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  if (datum && uhrzeit) {
+    const slotId = `${datum}_${uhrzeit}`
+    await deleteDoc(doc(db, 'belegteSlots', slotId))
+  }
 }
 
 // ── Gebuchte Slots pro Datum (für Kalender-Sperrung) ─────────────────────────
+
+/**
+ * Liest die belegten Zeitslots aus der `belegteSlots`-Collection.
+ * Diese Collection enthält keine personenbezogenen Daten und darf
+ * daher öffentlich gelesen werden (Firestore-Regel: allow read).
+ */
 export async function getBookingsMap() {
-  const q = query(
-    collection(db, 'terminbuchungen'),
-    where('status', '!=', 'storniert'),
-  )
-  const snapshot = await getDocs(q)
+  const snapshot = await getDocs(collection(db, 'belegteSlots'))
   const map = {}
-  snapshot.docs.forEach(doc => {
-    const { datum, uhrzeit } = doc.data()
+  snapshot.docs.forEach(d => {
+    const { datum, uhrzeit } = d.data()
     if (!datum || !uhrzeit) return
     if (!map[datum]) map[datum] = []
     if (!map[datum].includes(uhrzeit)) map[datum].push(uhrzeit)

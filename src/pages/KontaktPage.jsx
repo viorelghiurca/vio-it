@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import {
   Mail, MapPin, Clock, MessageCircle, User,
   Building2, Phone, Send, CheckCircle2, ArrowRight
@@ -9,6 +9,7 @@ import {
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
 import { saveContactRequest } from '../lib/firestore'
+import { checkSpam, markSubmitted } from '../lib/spamProtection'
 
 const subjects = [
   'KI-Automatisierung',
@@ -24,11 +25,19 @@ export default function KontaktPage() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const honeypotRef = useRef('')
 
   const onSubmit = async (data) => {
+    const spam = checkSpam({ honeypot: honeypotRef.current, formId: 'kontakt' })
+    if (spam.blocked) {
+      if (spam.reason !== 'bot') toast.error(spam.reason)
+      return
+    }
+
     setIsSubmitting(true)
     try {
       await saveContactRequest(data)
+      markSubmitted('kontakt')
       setSubmitted(true)
       reset()
       toast.success('Nachricht erfolgreich gesendet!')
@@ -128,6 +137,19 @@ export default function KontaktPage() {
                   <h2 className="text-xl font-bold text-neutral-900 mb-6">Nachricht senden</h2>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                    {/* Honeypot – unsichtbar für echte Nutzer, Bots füllen es aus */}
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', tabIndex: -1 }}>
+                      <label htmlFor="website">Website</label>
+                      <input
+                        id="website"
+                        name="website"
+                        type="text"
+                        autoComplete="off"
+                        tabIndex={-1}
+                        onChange={e => { honeypotRef.current = e.target.value }}
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="input-label">

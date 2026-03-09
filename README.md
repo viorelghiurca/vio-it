@@ -98,12 +98,12 @@ Die `.env`-Datei wird **niemals committed** (ist in `.gitignore`).
 
 ```env
 # Firebase – Werte aus Firebase Console
-VITE_FIREBASE_API_KEY=AIzaSy...
-VITE_FIREBASE_AUTH_DOMAIN=vio-it.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=vio-it
-VITE_FIREBASE_STORAGE_BUCKET=vio-it.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
-VITE_FIREBASE_APP_ID=1:123456789:web:abc123
+VITE_FIREBASE_API_KEY=YOUR_API_KEY
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=YOUR_SENDER_ID
+VITE_FIREBASE_APP_ID=YOUR_APP_ID
 VITE_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
 
 # EmailJS – Werte aus EmailJS Dashboard
@@ -137,6 +137,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // ── Kontaktanfragen: nur Erstellen, kein Lesen/Ändern/Löschen ──
     match /kontaktanfragen/{id} {
       allow create: if request.resource.data.keys().hasAll(['name', 'email', 'betreff', 'nachricht'])
                     && request.resource.data.name is string
@@ -144,16 +145,29 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // ── Terminbuchungen: enthält personenbezogene Daten ──
+    // get = Einzeldokument lesen (für Stornierungsseite, Authentifizierung via geheimer Dokument-ID)
+    // list = GESPERRT (kein Massen-Auslesen aller Kundendaten!)
     match /terminbuchungen/{id} {
       allow create: if request.resource.data.keys().hasAll(['name', 'email', 'terminArt', 'datum', 'uhrzeit'])
                     && request.resource.data.email.matches('.*@.*\\..*');
-      // Lesezugriff für Stornierungsseite (Authentifizierung via geheimer Dokument-ID)
-      allow read: if true;
-      // Nur Stornierung erlaubt (kein anderes Feld darf geändert werden)
+      allow get:    if true;
+      allow list:   if false;
       allow update: if request.resource.data.diff(resource.data)
                          .affectedKeys().hasOnly(['status', 'cancelledAt'])
                     && request.resource.data.status == 'storniert';
       allow delete: if false;
+    }
+
+    // ── Belegte Slots: NUR Datum + Uhrzeit, KEINE personenbezogenen Daten ──
+    // Darf öffentlich gelesen werden (Kalender-Anzeige).
+    match /belegteSlots/{slotId} {
+      allow read:   if true;
+      allow create: if request.resource.data.keys().hasAll(['datum', 'uhrzeit', 'bookingId'])
+                    && request.resource.data.datum is string
+                    && request.resource.data.uhrzeit is string;
+      allow delete: if true;
+      allow update: if false;
     }
 
   }
@@ -176,6 +190,16 @@ EmailJS ermöglicht das Versenden von E-Mails direkt aus dem Browser – **ohne 
 1. Kostenlosen Account auf [emailjs.com](https://www.emailjs.com) erstellen
 2. **Email Services** → „Add New Service" → Gmail / eigene Domain verbinden
 3. Notierten **Service ID** (z.B. `service_abc1234`)
+
+### ⚠️ Sicherheit: Domain-Restriction aktivieren
+
+Da der EmailJS Public Key im Browser sichtbar ist, **unbedingt** eine Domain-Beschränkung setzen:
+
+1. [emailjs.com](https://www.emailjs.com) → **Account** → **Security**
+2. **Allowed Origins** → `https://vio-it.de` eintragen
+3. Speichern
+
+Damit können E-Mails nur noch von eurer Domain aus versendet werden – auch wenn jemand den Public Key kennt.
 
 ### 2. Drei E-Mail-Templates anlegen
 

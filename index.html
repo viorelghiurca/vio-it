@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#4f46e5" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src  'self' 'unsafe-inline';
+      style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src    'self' https://fonts.gstatic.com;
+      img-src     'self' data: https:;
+      connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://api.emailjs.com https://*.google-analytics.com;
+    " />
     <title>VIO-IT – Digitale Lösungen für moderne Unternehmen</title>
     <meta name="description" content="VIO-IT – Ihr IT-Partner für KI-Automatisierung, Website-Erstellung, IT-Support und Digitalisierung. Viorel Ghiurca, Fachinformatiker & IT-Experte." />
     <!-- GitHub Pages SPA Redirect Handler -->

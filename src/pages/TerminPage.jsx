@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
@@ -11,6 +11,7 @@ import SEOHead from '../components/ui/SEOHead'
 import CustomCalendar, { toKey } from '../components/ui/CustomCalendar'
 import { saveAppointment, getBookingsMap } from '../lib/firestore'
 import { sendCustomerConfirmation, sendAdminNotification } from '../lib/emailService'
+import { checkSpam, markSubmitted } from '../lib/spamProtection'
 
 const appointmentTypes = [
   {
@@ -55,6 +56,7 @@ export default function TerminPage() {
   const [bookedSlotsMap, setBookedSlotsMap] = useState({})
 
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const honeypotRef = useRef('')
 
   useEffect(() => {
     getBookingsMap()
@@ -90,6 +92,13 @@ export default function TerminPage() {
       toast.error('Bitte alle Felder ausfüllen.')
       return
     }
+
+    const spam = checkSpam({ honeypot: honeypotRef.current, formId: 'termin' })
+    if (spam.blocked) {
+      if (spam.reason !== 'bot') toast.error(spam.reason)
+      return
+    }
+
     setIsSubmitting(true)
     try {
       const bookingData = {
@@ -99,11 +108,11 @@ export default function TerminPage() {
         uhrzeit: selectedTime,
       }
       const id = await saveAppointment(bookingData)
+      markSubmitted('termin')
       setBookingId(id)
       setStep(4)
       toast.success('Termin erfolgreich gebucht!')
 
-      // E-Mails asynchron versenden – Fehler nicht an den Nutzer weitergeben
       Promise.allSettled([
         sendCustomerConfirmation({ booking: bookingData, bookingId: id }),
         sendAdminNotification({ booking: bookingData, bookingId: id }),
@@ -339,6 +348,19 @@ export default function TerminPage() {
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  {/* Honeypot – unsichtbar für echte Nutzer, Bots füllen es aus */}
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', tabIndex: -1 }}>
+                    <label htmlFor="company_url">Company URL</label>
+                    <input
+                      id="company_url"
+                      name="company_url"
+                      type="text"
+                      autoComplete="off"
+                      tabIndex={-1}
+                      onChange={e => { honeypotRef.current = e.target.value }}
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="input-label">

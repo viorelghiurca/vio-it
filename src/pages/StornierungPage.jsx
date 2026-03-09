@@ -42,7 +42,7 @@ export default function StornierungPage() {
     setConfirming(true)
     setError('')
     try {
-      await cancelAppointment(bookingId)
+      await cancelAppointment(bookingId, { datum: booking.datum, uhrzeit: booking.uhrzeit })
       sendCancellationConfirmation({ booking, bookingId }).catch(() => {})
       setDone(true)
     } catch {
