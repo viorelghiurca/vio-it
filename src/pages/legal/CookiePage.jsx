@@ -20,7 +20,7 @@ export default function CookiePage() {
     <>
       <SEOHead
         title="Cookie-Richtlinie"
-        description="Cookie-Richtlinie von VIO-IT – Informationen zur Verwendung von Cookies auf vio-it.de"
+        description="Cookie-Richtlinie von VIO-IT – Informationen zur Verwendung von Cookies auf it.ghiurcaviorel.de"
         canonical="/cookie-richtlinie"
         noIndex
       />
@@ -94,7 +94,7 @@ export default function CookiePage() {
                     description="Diese Cookies sind für den Betrieb der Website unbedingt erforderlich. Ohne sie kann die Website nicht ordnungsgemäß funktionieren."
                     always
                     cookies={[
-                      { name: 'vio-it-cookie-consent', purpose: 'Speichert Ihre Cookie-Einwilligung', duration: 'Persistent (1 Jahr)' },
+                      { name: 'vio-it-cookie-consent', purpose: 'Speichert Ihre Cookie-Einwilligung (localStorage)', duration: '1 Jahr (automatisches Ablaufdatum)' },
                     ]}
                   />
                   <CookieTable

@@ -16,7 +16,7 @@
 ![EmailJS](https://img.shields.io/badge/EmailJS-4.4-FF6B35?logo=minutemailer&logoColor=white)
 ![License](https://img.shields.io/badge/Lizenz-Privat-red)
 
-[🌐 Live ansehen](https://vio-it.de) &nbsp;·&nbsp; [📅 Termin buchen](https://vio-it.de/termin) &nbsp;·&nbsp; [📬 Kontakt](https://vio-it.de/kontakt)
+[🌐 Live ansehen](https://it.ghiurcaviorel.de) &nbsp;·&nbsp; [📅 Termin buchen](https://it.ghiurcaviorel.de/termin) &nbsp;·&nbsp; [📬 Kontakt](https://it.ghiurcaviorel.de/kontakt)
 
 </div>
 
@@ -114,7 +114,7 @@ VITE_EMAILJS_TEMPLATE_ADMIN=template_xxxxxxx
 VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
 
 # Basis-URL (für Stornierungs-Links in E-Mails)
-VITE_BASE_URL=https://vio-it.de
+VITE_BASE_URL=https://it.ghiurcaviorel.de
 ```
 
 > **Firebase:** Console → Projekteinstellungen → Deine Apps → Webkonfiguration  
@@ -196,7 +196,7 @@ EmailJS ermöglicht das Versenden von E-Mails direkt aus dem Browser – **ohne 
 Da der EmailJS Public Key im Browser sichtbar ist, **unbedingt** eine Domain-Beschränkung setzen:
 
 1. [emailjs.com](https://www.emailjs.com) → **Account** → **Security**
-2. **Allowed Origins** → `https://vio-it.de` eintragen
+2. **Allowed Origins** → `https://it.ghiurcaviorel.de` eintragen
 3. Speichern
 
 Damit können E-Mails nur noch von eurer Domain aus versendet werden – auch wenn jemand den Public Key kennt.
@@ -299,7 +299,7 @@ Jeder Push auf `main` triggert automatisch einen Build und deployt auf GitHub Pa
 
 **Schritt 1 – Domain in GitHub hinterlegen**
 
-Repository → Settings → Pages → **Custom domain** → `vio-it.de` → Speichern
+Repository → Settings → Pages → **Custom domain** → `it.ghiurcaviorel.de` → Speichern
 
 **Schritt 2 – DNS-Einträge beim Provider setzen**
 
@@ -475,7 +475,7 @@ npm run lint      # ESLint ausführen
 **Deployment**
 - [ ] Alle Werte als GitHub Secrets hinterlegen (Firebase + EmailJS)
 - [ ] GitHub Pages aktivieren (*Source: GitHub Actions*)
-- [ ] Custom Domain `vio-it.de` in GitHub Pages konfigurieren
+- [ ] Custom Domain `it.ghiurcaviorel.de` in GitHub Pages konfigurieren
 - [ ] DNS-Einträge beim Provider setzen
 - [ ] HTTPS erzwingen aktivieren
 
@@ -506,6 +506,6 @@ npm run lint      # ESLint ausführen
 
 **VIO-IT · Viorel Ghiurca · IHK-geprüfter Fachinformatiker**
 
-[vio-it.de](https://vio-it.de) · [mail@viorelghiurca.de](mailto:mail@viorelghiurca.de) · Made in Germany 🇩🇪
+[it.ghiurcaviorel.de](https://it.ghiurcaviorel.de) · [mail@viorelghiurca.de](mailto:mail@viorelghiurca.de) · Made in Germany 🇩🇪
 
 </div>

@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { getAnalytics, isSupported } from 'firebase/analytics'
+import { getAnalytics, setAnalyticsCollectionEnabled, isSupported } from 'firebase/analytics'
 
-// Firebase-Konfiguration – Werte aus .env-Datei laden
 const firebaseConfig = {
   apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -16,13 +15,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 
-// Analytics nur nach Cookie-Einwilligung laden
+let analyticsInstance = null
+
 export const initAnalytics = async () => {
   const supported = await isSupported()
   if (supported) {
-    return getAnalytics(app)
+    analyticsInstance = getAnalytics(app)
+    setAnalyticsCollectionEnabled(analyticsInstance, true)
+    return analyticsInstance
   }
   return null
+}
+
+export const disableAnalytics = async () => {
+  const supported = await isSupported()
+  if (supported) {
+    const analytics = getAnalytics(app)
+    setAnalyticsCollectionEnabled(analytics, false)
+    analyticsInstance = null
+  }
 }
 
 export default app

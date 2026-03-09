@@ -7,7 +7,7 @@ const TMPL_STORNIERUNG   = import.meta.env.VITE_EMAILJS_TEMPLATE_STORNIERUNG
 const TMPL_ADMIN         = import.meta.env.VITE_EMAILJS_TEMPLATE_ADMIN
 
 const ADMIN_EMAIL = 'mail@viorelghiurca.de'
-const BASE_URL    = import.meta.env.VITE_BASE_URL || 'https://vio-it.de'
+const BASE_URL    = import.meta.env.VITE_BASE_URL || 'https://it.ghiurcaviorel.de'
 
 const terminTypLabel = {
   erstgespraech: 'Kostenloses Erstgespräch (30 Min.)',

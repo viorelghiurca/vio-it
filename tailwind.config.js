@@ -42,8 +42,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],

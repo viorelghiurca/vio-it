@@ -36,7 +36,8 @@ export default function ImpressumPage() {
 
               <LegalSection title="Kontakt">
                 <p className="text-neutral-600 text-sm leading-relaxed">
-                  E-Mail: <a href="mailto:mail@viorelghiurca.de" className="text-primary-600 hover:underline">mail@viorelghiurca.de</a>
+                  E-Mail: <a href="mailto:mail@viorelghiurca.de" className="text-primary-600 hover:underline">mail@viorelghiurca.de</a><br />
+                  Website: <a href="https://it.ghiurcaviorel.de" className="text-primary-600 hover:underline">it.ghiurcaviorel.de</a>
                 </p>
               </LegalSection>
 

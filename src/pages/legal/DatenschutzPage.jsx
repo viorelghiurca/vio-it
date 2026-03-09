@@ -40,7 +40,8 @@ export default function DatenschutzPage() {
                   Verantwortlicher im Sinne der DSGVO ist:<br /><br />
                   <strong>VIO-IT · Viorel Ghiurca</strong><br />
                   86720 Nördlingen<br />
-                  E-Mail: <a href="mailto:mail@viorelghiurca.de" className="text-primary-600 hover:underline">mail@viorelghiurca.de</a>
+                  E-Mail: <a href="mailto:mail@viorelghiurca.de" className="text-primary-600 hover:underline">mail@viorelghiurca.de</a><br />
+                  Website: <a href="https://it.ghiurcaviorel.de" className="text-primary-600 hover:underline">it.ghiurcaviorel.de</a>
                 </p>
               </LegalSection>
 
@@ -73,16 +74,65 @@ export default function DatenschutzPage() {
                 </ul>
               </LegalSection>
 
-              <LegalSection title="5. Speicherung und Weitergabe">
-                <p>
-                  Ihre Daten werden in Firebase (Google LLC) gespeichert. Firebase ist nach EU-DSGVO zertifiziert
-                  und verarbeitet Daten in EU-Rechenzentren. Eine Weitergabe an Dritte erfolgt nicht,
+              <LegalSection title="5. Speicherung und Aufbewahrungsfristen">
+                <p className="mb-3">
+                  Ihre Daten werden in Firebase (Google Ireland Limited) gespeichert. Die Datenverarbeitung
+                  erfolgt in EU-Rechenzentren. Eine Weitergabe an sonstige Dritte erfolgt nicht,
                   es sei denn, dies ist zur Vertragserfüllung erforderlich oder Sie haben ausdrücklich eingewilligt.
-                  Ihre Daten werden nach Abschluss des Anliegens und Ablauf gesetzlicher Aufbewahrungsfristen gelöscht.
+                </p>
+                <p className="mb-3">Wir löschen Ihre personenbezogenen Daten, sobald der Zweck der Speicherung entfällt:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li><strong>Kontaktanfragen:</strong> 6 Monate nach Abschluss der Kommunikation</li>
+                  <li><strong>Terminbuchungen:</strong> 6 Monate nach dem Termin, sofern keine Geschäftsbeziehung entsteht</li>
+                  <li><strong>Cookie-Einwilligung:</strong> Automatisches Ablaufdatum nach 1 Jahr</li>
+                  <li><strong>Analysedaten:</strong> Automatische Löschung nach 14 Monaten (Firebase Analytics Standard)</li>
+                </ul>
+                <p className="mt-3">
+                  Gesetzliche Aufbewahrungspflichten (z.&nbsp;B. steuerrechtlich) bleiben hiervon unberührt.
                 </p>
               </LegalSection>
 
-              <LegalSection title="6. Cookies">
+              <LegalSection title="6. Auftragsverarbeiter und Drittanbieter">
+                <p className="mb-3">Zur Bereitstellung unserer Website und Dienste setzen wir folgende Drittanbieter ein:</p>
+
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">a) Firebase (Google Ireland Limited)</h3>
+                <p>
+                  Wir nutzen Firebase Firestore zur Speicherung von Kontaktanfragen und Terminbuchungen sowie
+                  Firebase Analytics (nur nach Ihrer Einwilligung) zur anonymisierten Nutzungsanalyse.
+                  Die Datenverarbeitung erfolgt auf Grundlage eines Auftragsverarbeitungsvertrags (AVV) mit Google.
+                  Google Ireland Limited hat seinen Sitz in der EU. Soweit eine Datenübermittlung in die USA stattfindet,
+                  erfolgt diese auf Basis des EU-US Data Privacy Frameworks (Angemessenheitsbeschluss der EU-Kommission vom 10. Juli 2023).
+                  Weitere Informationen: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">firebase.google.com/support/privacy</a>
+                </p>
+
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">b) EmailJS</h3>
+                <p>
+                  Für den Versand von Bestätigungs-E-Mails bei Terminbuchungen und Stornierungen nutzen wir den Dienst EmailJS.
+                  Dabei werden Ihr Name, Ihre E-Mail-Adresse und die Buchungsdaten an die Server von EmailJS übermittelt.
+                  Die Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO (Vertragserfüllung).
+                  Weitere Informationen: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">emailjs.com/legal/privacy-policy</a>
+                </p>
+
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">c) GitHub Pages (Hosting)</h3>
+                <p>
+                  Die Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf der Website werden
+                  technisch bedingt Ihre IP-Adresse und der User-Agent an die Server von GitHub übermittelt.
+                  Die Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der zuverlässigen Bereitstellung der Website).
+                  GitHub nimmt am EU-US Data Privacy Framework teil.
+                  Weitere Informationen: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">GitHub Privacy Statement</a>
+                </p>
+              </LegalSection>
+
+              <LegalSection title="7. Schriftarten">
+                <p>
+                  Diese Website verwendet die Schriftart „Inter" (Open-Source, SIL Open Font License).
+                  Die Schriftdateien werden lokal von unserem Server bereitgestellt – es findet keine
+                  Verbindung zu externen Font-Servern (z.&nbsp;B. Google Fonts) statt. Es werden daher
+                  keine personenbezogenen Daten an Dritte im Zusammenhang mit der Schriftart-Einbindung übermittelt.
+                </p>
+              </LegalSection>
+
+              <LegalSection title="8. Cookies">
                 <p>
                   Wir verwenden Cookies. Notwendige Cookies sind für den Betrieb der Website erforderlich
                   und werden ohne Einwilligung gesetzt. Analytische Cookies (Firebase Analytics) werden
@@ -91,7 +141,16 @@ export default function DatenschutzPage() {
                 </p>
               </LegalSection>
 
-              <LegalSection title="7. Ihre Rechte">
+              <LegalSection title="9. SSL/TLS-Verschlüsselung">
+                <p>
+                  Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung.
+                  Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers
+                  von „http://" auf „https://" wechselt. Wenn die SSL- bzw. TLS-Verschlüsselung
+                  aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+                </p>
+              </LegalSection>
+
+              <LegalSection title="10. Ihre Rechte">
                 <p className="mb-3">Sie haben nach der DSGVO folgende Rechte:</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO)</li>
@@ -108,14 +167,21 @@ export default function DatenschutzPage() {
                 </p>
               </LegalSection>
 
-              <LegalSection title="8. Beschwerderecht">
-                <p>
+              <LegalSection title="11. Beschwerderecht">
+                <p className="mb-3">
                   Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
-                  Die zuständige Aufsichtsbehörde richtet sich nach Ihrem Bundesland.
+                  Die für uns zuständige Aufsichtsbehörde ist:
+                </p>
+                <p>
+                  <strong>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</strong><br />
+                  Promenade 18, 91522 Ansbach<br />
+                  Telefon: +49 (0) 981 180093-0<br />
+                  E-Mail: <a href="mailto:poststelle@lda.bayern.de" className="text-primary-600 hover:underline">poststelle@lda.bayern.de</a><br />
+                  Web: <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">www.lda.bayern.de</a>
                 </p>
               </LegalSection>
 
-              <LegalSection title="9. Änderungen dieser Datenschutzerklärung">
+              <LegalSection title="12. Änderungen dieser Datenschutzerklärung">
                 <p>
                   Wir behalten uns vor, diese Datenschutzerklärung anzupassen, wenn sich technische
                   oder rechtliche Gegebenheiten ändern. Die aktuelle Version finden Sie stets auf dieser Seite.

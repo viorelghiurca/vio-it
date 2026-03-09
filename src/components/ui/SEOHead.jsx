@@ -7,7 +7,7 @@ export default function SEOHead({
   type = 'website',
   noIndex = false,
 }) {
-  const siteUrl = 'https://vio-it.de'
+  const siteUrl = 'https://it.ghiurcaviorel.de'
   const fullTitle = title ? `${title} | VIO-IT` : 'VIO-IT – Digitale Lösungen für moderne Unternehmen'
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl
 
