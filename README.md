@@ -8,7 +8,7 @@
 
 **Professionelle Business-Website · React 18 · Vite 6 · Tailwind CSS 3 · Firebase · EmailJS**
 
-[![Deploy](https://github.com/DEIN-USERNAME/vio-it/actions/workflows/deploy.yml/badge.svg)](https://github.com/DEIN-USERNAME/vio-it/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/viorelghiurca/vio-it/actions/workflows/deploy.yml/badge.svg)](https://github.com/viorelghiurca/vio-it/actions/workflows/deploy.yml)
 ![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
@@ -74,7 +74,7 @@ CI/CD           GitHub Actions → GitHub Pages
 
 ```bash
 # 1. Repository klonen
-git clone https://github.com/DEIN-USERNAME/vio-it.git
+git clone https://github.com/viorelghiurca/vio-it.git
 cd vio-it
 
 # 2. Abhängigkeiten installieren
@@ -238,7 +238,7 @@ Die fertigen HTML-Templates liegen im Ordner `email-templates/` und können dire
 git init
 git add .
 git commit -m "feat: initial VIO-IT website"
-git remote add origin https://github.com/DEIN-USERNAME/vio-it.git
+git remote add origin https://github.com/viorelghiurca/vio-it.git
 git push -u origin main
 ```
 
@@ -286,7 +286,7 @@ A       @       185.199.108.153
 A       @       185.199.109.153
 A       @       185.199.110.153
 A       @       185.199.111.153
-CNAME   www     DEIN-USERNAME.github.io
+CNAME   www     viorelghiurca.github.io
 ```
 
 **Schritt 3 – HTTPS erzwingen**
