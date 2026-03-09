@@ -1,0 +1,470 @@
+Erstelle eine moderne, hochwertige, vertrauenswürdige und conversion-optimierte Business-Website für mein IT-Unternehmen mit dem Namen „VIO-IT“.
+Die Marke soll professionell, einprägsam, modern und in Deutschland gut verständlich wirken. Der Stil soll clean, elegant, minimalistisch und premium sein — inspiriert von hochwertigem Apple-artigem Design, aber mit eigener Identität. Die Website soll technisch modern, schnell, responsive, SEO-optimiert und benutzerfreundlich sein.
+
+Unternehmensprofil
+
+Der Inhaber ist Viorel Ghiurca, IHK-geprüfter Fachinformatiker mit Fokus auf:
+
+KI-Automatisierung
+
+Website-Erstellung
+
+Hardware- und Software-Betreuung
+
+IT-Support für Unternehmen
+
+DevOps
+
+Web Design
+
+Projektmanagement
+
+Systemadministration
+
+Digitalisierung für kleine und mittelständische Unternehmen
+
+Zielgruppe
+
+Die Website richtet sich primär an:
+
+kleine und mittelständische Unternehmen in Deutschland
+
+Selbstständige
+
+lokale Unternehmen
+
+Firmen, die Prozesse digitalisieren möchten
+
+Unternehmen, die moderne Websites, IT-Betreuung oder KI-gestützte Automatisierung suchen
+
+Ziel der Website
+
+Die Website soll:
+
+Vertrauen aufbauen
+
+professionell und hochwertig wirken
+
+Leistungen klar und verständlich präsentieren
+
+Besucher in Anfragen oder Terminbuchungen konvertieren
+
+lokal und organisch gut bei Google gefunden werden
+
+einfach zu bedienen sein
+
+seriös, modern und kundenorientiert auftreten
+
+Stil / Designrichtung
+
+Gestalte die Website mit folgenden Designprinzipien:
+
+cleanes, minimalistisches Premium-Design
+
+viel Weißraum
+
+klare Typografie
+
+moderne große Headlines
+
+elegante Sektionen
+
+sanfte Animationen
+
+hochwertige Bilder / moderne Business-Visuals / Technik-Visuals
+
+Icons für Leistungen
+
+weiche Schatten
+
+dezente Farbverläufe
+
+sehr aufgeräumtes Interface
+
+mobile first
+
+professionell, modern, technisch kompetent und vertrauenswürdig
+
+Branding
+
+Markenname: VIO-IT
+Optionaler Claim-Vorschlag:
+„Digitale Lösungen für moderne Unternehmen“
+oder
+„IT, Automatisierung und Weblösungen für den Mittelstand“
+
+Bitte entwickle ein konsistentes Branding mit:
+
+modernem Logo-Konzept
+
+Farbpalette in elegantem, technischem Stil
+
+professioneller Typografie
+
+wiedererkennbaren CTA-Elementen
+
+Gewünschte Seitenstruktur
+
+Erstelle eine vollständige Website mit folgenden Seiten bzw. Bereichen:
+
+1. Startseite
+
+Mit starkem Hero-Bereich:
+
+starke Headline
+
+kurze klare Nutzenkommunikation
+
+CTA-Buttons wie „Kostenloses Erstgespräch“ und „Leistungen ansehen“
+
+modernes Hero-Bild oder Visual
+
+kurze Vertrauensargumente
+
+Überblick über Leistungen
+
+Vorteile / Warum VIO-IT
+
+kurze Vorstellung
+
+Referenz-/Projektbereich als Platzhalter
+
+CTA zur Terminbuchung
+
+FAQ
+
+Footer mit allen rechtlich nötigen Links
+
+2. Über mich / Über VIO-IT
+
+Vorstellung von Viorel Ghiurca
+
+IHK-geprüfter Fachinformatiker
+
+Fokus auf praktische, moderne und effiziente IT-Lösungen
+
+vertrauensbildend, sympathisch und professionell
+
+Foto-Platzhalter einplanen
+
+Werte: zuverlässig, transparent, lösungsorientiert, modern
+
+3. Leistungen
+
+Erstelle eine attraktive Leistungsübersicht mit einzelnen Leistungsblöcken für:
+
+a) KI-Automatisierung
+
+Automatisierung von Geschäftsprozessen
+
+KI-gestützte Workflows
+
+Zeiteinsparung
+
+Effizienzsteigerung
+
+individuelle Lösungen für Unternehmen
+
+b) Website-Erstellung
+
+moderne Unternehmenswebsites
+
+responsive Design
+
+SEO-Basisoptimierung
+
+performante Ladezeiten
+
+Conversion-optimierte Seiten
+
+c) Hardware- & Software-Betreuung
+
+Einrichtung und Wartung
+
+Arbeitsplatz-Setups
+
+Support für Unternehmen
+
+Beratung bei IT-Strukturen
+
+d) IT-Support & Systemadministration
+
+Windows / Linux
+
+Netzwerke
+
+Benutzerverwaltung
+
+laufende technische Betreuung
+
+e) Digitalisierung & Prozessoptimierung
+
+bestehende Abläufe analysieren
+
+digitale Lösungen entwickeln
+
+moderne Tools integrieren
+
+Automatisierungspotenziale erkennen
+
+Für jede Leistung:
+
+klare Überschrift
+
+kurzer Nutzenfokus
+
+typische Probleme des Kunden
+
+konkrete Lösung
+
+CTA „Beratung anfragen“
+
+4. Terminbuchung
+
+Erstelle eine professionelle Terminbuchungsseite mit:
+
+Auswahl von Erstgespräch / Beratung / IT-Analyse
+
+Kalender-/Terminbuchungsfunktion
+
+Formular mit Name, Firma, E-Mail, Telefon, Anliegen
+
+DSGVO-konforme Einwilligung vor Absenden
+
+Bestätigungsseite
+
+Speicherung der Buchungsdaten in Firebase
+
+5. Kontakt
+
+Kontaktformular
+
+E-Mail
+
+Telefonnummer optional
+
+Standort / Einsatzgebiet
+
+klare CTA
+
+Datenschutz-Hinweis beim Formular
+
+6. Rechtliches
+
+Erstelle eigene Seiten bzw. Platzhalter für:
+
+Impressum
+
+Datenschutzerklärung
+
+Cookie-Richtlinie
+
+ggf. AGB
+
+Widerruf nur falls notwendig
+
+Einwilligungstexte für Formulare
+
+Technische Anforderungen
+
+Bitte baue die Website mit einer modernen Architektur. Nutze:
+
+Frontend modern und performant
+
+Firebase als Backend/Datenbank
+
+Firebase für:
+
+Kontaktanfragen
+
+Terminbuchungen
+
+ggf. Lead-Verwaltung
+
+saubere Struktur
+
+schnelle Ladezeiten
+
+responsive auf Smartphone, Tablet und Desktop
+
+barrierearme Grundstruktur
+
+sichere Formulare
+
+spamgeschützte Formulare
+
+SEO-freundliche URL-Struktur
+
+strukturierte Daten, wo sinnvoll
+
+SEO-Anforderungen
+
+Die Website soll suchmaschinenfreundlich aufgebaut sein. Bitte berücksichtige:
+
+SEO-freundliche Titel und Meta Descriptions
+
+semantische HTML-Struktur
+
+H1 / H2 / H3 logisch einsetzen
+
+lokale SEO-Ausrichtung für Deutschland
+
+suchstarke Keywords rund um:
+
+KI Automatisierung für Unternehmen
+
+Website erstellen lassen
+
+IT Betreuung Unternehmen
+
+IT Service Mittelstand
+
+Digitalisierung Mittelstand
+
+Webdesign Unternehmen
+
+Software & Hardware Betreuung
+
+interne Verlinkung
+
+FAQ für Rich Results
+
+optimierte Ladezeiten
+
+Alt-Texte für Bilder
+
+saubere mobile Darstellung
+
+DSGVO / Datenschutz / Cookies
+
+Die Website muss DSGVO-konform geplant werden. Bitte berücksichtige:
+
+Cookie-Banner mit Opt-in/Opt-out
+
+nur notwendige Cookies standardmäßig aktiv
+
+Einwilligungsmanagement für optionale Cookies
+
+Formular-Einwilligung mit Datenschutzhinweis
+
+Datenschutzerklärung als eigene Seite
+
+Impressum als eigene Seite
+
+Speicherung personenbezogener Daten nur transparent und zweckgebunden
+
+Hinweis auf Kontaktformular-Datenverarbeitung
+
+Buchungsdaten datenschutzkonform speichern
+
+Checkboxen für Zustimmung, wo erforderlich
+
+technisch so planen, dass Tracking-Tools erst nach Einwilligung geladen werden
+
+datensparsame Standardkonfiguration
+
+Inhalte / Copywriting
+
+Der Textstil soll sein:
+
+klar
+
+seriös
+
+modern
+
+kundenfreundlich
+
+verständlich auch für Nicht-Techniker
+
+lösungsorientiert
+
+vertrauensbildend
+
+nicht zu technisch
+
+fokus auf Mehrwert und Ergebnisse
+
+Die Inhalte sollen nicht nach Standard-Agentur-Floskeln klingen, sondern hochwertig und glaubwürdig.
+
+Conversion-Elemente
+
+Baue gezielt Conversion-Elemente ein:
+
+auffällige aber elegante CTA-Buttons
+
+kostenlose Erstberatung
+
+Vertrauensargumente
+
+Problem-Lösung-Kommunikation
+
+einfache Kontaktaufnahme
+
+Terminbuchung mit wenigen Klicks
+
+FAQ gegen typische Einwände
+
+Sektionen wie „Warum VIO-IT?“ und „So läuft die Zusammenarbeit ab“
+
+Bildsprache
+
+Nutze moderne, hochwertige Bildideen:
+
+Technologie
+
+Business
+
+digitale Prozesse
+
+moderne Arbeitsplätze
+
+IT-Infrastruktur
+
+Beratungssituationen
+
+abstrahierte KI-/Automatisierungsvisuals
+
+freundliche, professionelle Atmosphäre
+
+clean und hochwertig statt überladen
+
+Zusätzliche Wünsche
+
+Die Website soll „teuer“, professionell und vertrauenswürdig aussehen
+
+nicht verspielt, sondern modern und hochwertig
+
+deutsche Sprache
+
+klare Nutzerführung
+
+ideal für B2B-Kunden
+
+optisch beeindruckend, aber einfach zu bedienen
+
+Fokus auf Kundengewinnung
+
+Gewünschtes Ergebnis
+
+Erstelle:
+
+die komplette Sitemap
+
+Wireframe-/Seitenstruktur
+
+Designkonzept
+
+Farbpalette und Typografie-Vorschläge
+
+SEO-optimierte Texte für alle Hauptseiten
+
+CTA-Texte
+
+DSGVO-relevante Bausteine als Platzhalter
+
+Firebase-Datenstruktur für Kontaktanfragen und Terminbuchungen
+
+Vorschlag für Terminbuchungs-Workflow
+
+moderne, produktionsreife Website-Struktur

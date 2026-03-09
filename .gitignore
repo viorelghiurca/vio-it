@@ -1,0 +1,75 @@
+# ── Dependencies ─────────────────────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ── Build Output ──────────────────────────────────────────────────────────────
+dist/
+dist-ssr/
+build/
+*.local
+
+# ── Environment Variables ─────────────────────────────────────────────────────
+# NIEMALS committen – Werte als GitHub Secrets hinterlegen
+.env
+.env.local
+.env.*.local
+# .env.example ist bewusst NICHT ignoriert (Vorlage für andere)
+
+# ── IDE & Editor ─────────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.cursor/
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ── Testing & Coverage ────────────────────────────────────────────────────────
+coverage/
+.nyc_output/
+
+# ── Cache ─────────────────────────────────────────────────────────────────────
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+.turbo/
+.vite/
+
+# ── TypeScript ────────────────────────────────────────────────────────────────
+*.tsbuildinfo
+
+# ── Firebase ─────────────────────────────────────────────────────────────────
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# ── Archiv & Temp ─────────────────────────────────────────────────────────────
+*.zip
+*.tar.gz
+*.bak
+*.tmp
+*.temp
