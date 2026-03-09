@@ -1,51 +1,27 @@
-import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 
-/**
- * Wrapper-Komponente, die Kinder animiert einblendet, wenn sie in den Viewport scrollen.
- */
+const initialByDirection = {
+  up:    { opacity: 0, y: 28 },
+  left:  { opacity: 0, x: -28 },
+  right: { opacity: 0, x: 28 },
+  none:  { opacity: 0 },
+}
+
 export default function AnimatedSection({
   children,
   className = '',
   delay = 0,
-  direction = 'up', // 'up' | 'left' | 'right' | 'none'
+  direction = 'up',
 }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-
-  const getInitialTransform = () => {
-    switch (direction) {
-      case 'up':    return 'translateY(28px)'
-      case 'left':  return 'translateX(-28px)'
-      case 'right': return 'translateX(28px)'
-      default:      return 'none'
-    }
-  }
-
   return (
-    <div
-      ref={ref}
+    <motion.div
       className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : getInitialTransform(),
-        transition: `opacity 0.65s ease-out ${delay}ms, transform 0.65s ease-out ${delay}ms`,
-      }}
+      initial={initialByDirection[direction] ?? initialByDirection.up}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -60px 0px', amount: 0.12 }}
+      transition={{ duration: 0.65, ease: 'easeOut', delay: delay / 1000 }}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }

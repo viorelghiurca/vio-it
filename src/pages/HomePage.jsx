@@ -4,6 +4,7 @@ import {
   CheckCircle2, ArrowRight, Shield, Zap, Clock, Star,
   Users, Award, MessageCircle, ChevronDown
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
 
@@ -29,30 +30,36 @@ function Hero() {
       <div className="section-container relative z-10 py-20 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
-          <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight text-balance opacity-0 animate-fade-up"
-            style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight text-balance"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
           >
             Digitale Lösungen{' '}
             <span className="bg-gradient-to-r from-primary-300 via-primary-200 to-primary-300 bg-clip-text text-transparent">
               die Ihr Unternehmen
             </span>{' '}
             voranbringen
-          </h1>
+          </motion.h1>
 
           {/* Subline */}
-          <p
-            className="text-xl text-neutral-300 max-w-2xl mx-auto mb-10 leading-relaxed opacity-0 animate-fade-up"
-            style={{ animationDelay: '280ms', animationFillMode: 'forwards' }}
+          <motion.p
+            className="text-xl text-neutral-300 max-w-2xl mx-auto mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.28 }}
           >
             Von KI-Automatisierung über professionelle Websites bis hin zu zuverlässigem IT-Support —
             ich bin Ihr persönlicher IT-Partner für nachhaltiges Wachstum.
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-up"
-            style={{ animationDelay: '440ms', animationFillMode: 'forwards' }}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.44 }}
           >
             <Link to="/termin" className="btn-primary btn-lg text-base">
               Kostenloses Erstgespräch
@@ -65,18 +72,20 @@ function Hero() {
               Leistungen entdecken
               <ArrowRight className="w-5 h-5" />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Trust signals */}
-          <div
-            className="flex flex-wrap justify-center gap-8 mt-16 text-sm text-neutral-400 opacity-0 animate-fade-up"
-            style={{ animationDelay: '580ms', animationFillMode: 'forwards' }}
+          <motion.div
+            className="flex flex-wrap justify-center gap-8 mt-16 text-sm text-neutral-400"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.58 }}
           >
             <TrustPill icon={<CheckCircle2 className="w-4 h-4 text-accent-400" />} text="Ausgebildet & zertifiziert" />
             <TrustPill icon={<Shield className="w-4 h-4 text-accent-400" />} text="DSGVO-konform" />
             <TrustPill icon={<Zap className="w-4 h-4 text-accent-400" />} text="Schnelle Reaktionszeit" />
             <TrustPill icon={<Star className="w-4 h-4 text-accent-400" />} text="100% Kundenfokus" />
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -4,6 +4,13 @@ import { Toaster } from 'react-hot-toast'
 import { CookieProvider } from './context/CookieContext'
 
 import Layout from './components/layout/Layout'
+
+const colors = {
+  neutral800: '#1f2937',
+  neutral50:  '#f9fafb',
+  accent500:  '#10b981',
+  red500:     '#ef4444',
+}
 import CookieBanner from './components/ui/CookieBanner'
 
 import HomePage from './pages/HomePage'
@@ -32,22 +39,22 @@ export default function App() {
         <ScrollToTop />
         <Toaster
           position="bottom-right"
-          toastOptions={{
-            duration: 5000,
-            style: {
-              borderRadius: '12px',
-              background: '#1f2937',
-              color: '#f9fafb',
-              fontSize: '14px',
-              fontFamily: 'Inter, sans-serif',
-            },
-            success: {
-              iconTheme: { primary: '#10b981', secondary: '#f9fafb' },
-            },
-            error: {
-              iconTheme: { primary: '#ef4444', secondary: '#f9fafb' },
-            },
-          }}
+            toastOptions={{
+              duration: 5000,
+              style: {
+                borderRadius: '16px',
+                background: colors.neutral800,
+                color: colors.neutral50,
+                fontSize: '14px',
+                fontFamily: 'Inter, sans-serif',
+              },
+              success: {
+                iconTheme: { primary: colors.accent500, secondary: colors.neutral50 },
+              },
+              error: {
+                iconTheme: { primary: colors.red500, secondary: colors.neutral50 },
+              },
+            }}
         />
         <CookieBanner />
         <Routes>

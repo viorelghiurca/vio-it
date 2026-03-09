@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   return (
     <>
       <SEOHead title="Seite nicht gefunden" noIndex />
-      <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 flex items-center justify-center px-4">
+      <div className="min-h-[60vh] bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 flex items-center justify-center px-4 pt-32 pb-20">
         <div className="text-center">
           <p className="text-8xl font-black text-white/10 mb-4 select-none">404</p>
           <h1 className="text-3xl font-bold text-white mb-3">Seite nicht gefunden</h1>
