@@ -50,6 +50,7 @@ export default function DatenschutzPage() {
                 <ul className="list-disc list-inside space-y-1 text-neutral-600">
                   <li>Kontaktformular: Name, Firma (optional), E-Mail, Telefon (optional), Betreff, Nachricht</li>
                   <li>Technische Daten: IP-Adresse (anonymisiert), Browser-Typ (durch den Hosting-Anbieter)</li>
+                  <li>Analysedaten (optional, nach Einwilligung): anonymisierte Nutzungsstatistiken</li>
                 </ul>
               </LegalSection>
 
@@ -57,6 +58,7 @@ export default function DatenschutzPage() {
                 <p className="mb-3">Wir verarbeiten Ihre Daten ausschließlich zu folgenden Zwecken:</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Beantwortung Ihrer Kontaktanfragen</li>
+                  <li>Verbesserung des Nutzererlebnisses durch anonyme Nutzungsanalyse (nach Einwilligung)</li>
                 </ul>
               </LegalSection>
 
@@ -65,6 +67,7 @@ export default function DatenschutzPage() {
                   Die Verarbeitung Ihrer Daten erfolgt auf Basis von:
                 </p>
                 <ul className="list-disc list-inside space-y-1 mt-2">
+                  <li><strong>Art. 6 Abs. 1 lit. a DSGVO</strong> – Einwilligung (Firebase Analytics)</li>
                   <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> – Vertragserfüllung und vorvertragliche Maßnahmen (Kontaktanfragen)</li>
                   <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> – Berechtigte Interessen (technischer Betrieb der Website)</li>
                 </ul>
@@ -91,7 +94,21 @@ export default function DatenschutzPage() {
               <LegalSection title="6. Auftragsverarbeiter und Drittanbieter">
                 <p className="mb-3">Zur Bereitstellung unserer Website und Dienste setzen wir folgende Drittanbieter ein:</p>
 
-                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">a) Web3Forms (Kontaktformular)</h3>
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">a) Firebase Analytics (Google)</h3>
+                <p>
+                  Sofern Sie Ihre Einwilligung über unseren Cookie-Banner erteilen (Art. 6 Abs. 1 lit. a DSGVO),
+                  verwenden wir auf dieser Website Firebase Analytics, einen Webanalysedienst der Google Ireland Limited,
+                  Gordon House, Barrow Street, Dublin 4, Irland („Google").
+                  Firebase Analytics erfasst anonymisierte Daten über die Nutzung unserer Website (z.B. besuchte Seiten,
+                  Verweildauer, Betriebssystem), um Berichte über die Website-Aktivitäten zu erstellen und
+                  das Nutzererlebnis zu verbessern. Ihre IP-Adresse wird dabei anonymisiert.
+                  Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.
+                  Google nimmt am EU-US Data Privacy Framework teil.
+                  Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Cookie-Einstellungen auf unserer Website ändern.
+                  Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Google Datenschutz</a>
+                </p>
+
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">b) Web3Forms (Kontaktformular)</h3>
                 <p>
                   Für die Übermittlung von Kontaktanfragen nutzen wir den Dienst Web3Forms.
                   Dabei werden Ihr Name, Ihre E-Mail-Adresse und Ihre Nachricht an die Server von Web3Forms übermittelt,
@@ -101,7 +118,7 @@ export default function DatenschutzPage() {
                   Weitere Informationen: <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">web3forms.com/privacy</a>
                 </p>
 
-                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">b) GitHub Pages (Hosting)</h3>
+                <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">c) GitHub Pages (Hosting)</h3>
                 <p>
                   Die Website wird über GitHub Pages (GitHub Inc., USA) gehostet. Beim Aufruf der Website werden
                   technisch bedingt Ihre IP-Adresse und der User-Agent an die Server von GitHub übermittelt.
@@ -122,8 +139,9 @@ export default function DatenschutzPage() {
 
               <LegalSection title="8. Cookies">
                 <p>
-                  Diese Website verwendet ausschließlich technisch notwendige Cookies (localStorage) zur
-                  Speicherung Ihrer Cookie-Einwilligung. Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt.
+                  Diese Website verwendet Cookies (localStorage) zur Speicherung Ihrer Cookie-Einwilligung.
+                  Sofern Sie zustimmen, wird auch ein Cookie zur Aktivierung von Webanalyse-Funktionen gesetzt.
+                  Es werden keine Marketing-Cookies eingesetzt.
                   Weitere Details finden Sie in unserer{' '}
                   <Link to="/cookie-richtlinie" className="text-primary-600 hover:underline">Cookie-Richtlinie</Link>.
                 </p>
