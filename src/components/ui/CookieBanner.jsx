@@ -9,6 +9,10 @@ export default function CookieBanner() {
 
   if (consent !== null) return null
 
+  const handleDecline = () => {
+    acceptNecessary()
+  }
+
   return (
     <div className="fixed bottom-0 inset-x-0 z-50 p-3 sm:p-6">
       <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden">
@@ -53,12 +57,16 @@ export default function CookieBanner() {
                 </div>
               )}
 
-              <div className="mt-5">
+              <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
                 <button
                   onClick={acceptAll}
                   className="btn-primary w-full sm:w-auto justify-center"
                 >
-                  Akzeptieren
+                  Annehmen
+                </button>
+
+                <button onClick={handleDecline} className="btn-secondary w-full sm:w-auto justify-center">
+                  Nur notwendige Cookies akzeptieren
                 </button>
               </div>
 
@@ -70,7 +78,8 @@ export default function CookieBanner() {
                 und{' '}
                 <Link to="/cookie-richtlinie" className="text-primary-600 hover:underline">
                   Cookie-Richtlinie
-                </Link>.
+                </Link>
+                .
               </p>
             </div>
           </div>
