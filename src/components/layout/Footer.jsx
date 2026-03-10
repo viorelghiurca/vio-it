@@ -106,9 +106,21 @@ export default function Footer() {
           <p className="text-xs text-neutral-500">
             © {year} VIO-IT · Viorel Ghiurca · Fachinformatiker & IT-Experte
           </p>
-          <p className="text-xs text-neutral-600">
-            Professionelle IT-Lösungen · Made in Germany
-          </p>
+          <div className="flex items-center gap-3 text-xs text-neutral-600">
+            <span>Professionelle IT-Lösungen · Made in Germany</span>
+            <span className="text-neutral-700">·</span>
+            <span>
+              Fotos von{' '}
+              <a
+                href="https://www.pexels.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-500 hover:text-white transition-colors"
+              >
+                Pexels
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

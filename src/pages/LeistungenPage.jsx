@@ -10,7 +10,7 @@ import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
 
 // ── Service Detail Block ──────────────────────────────────────────────────────
-function ServiceBlock({ id, icon, gradient, title, tagline, problem, solution, benefits, cta }) {
+function ServiceBlock({ id, icon, gradient, title, tagline, problem, solution, benefits, cta, image, imageAlt }) {
   return (
     <div id={id} className="scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -43,8 +43,19 @@ function ServiceBlock({ id, icon, gradient, title, tagline, problem, solution, b
           </Link>
         </AnimatedSection>
 
-        {/* Benefits */}
+        {/* Image + Benefits */}
         <AnimatedSection direction="right">
+          {image && (
+            <div className="relative rounded-2xl overflow-hidden mb-6 shadow-lg">
+              <img
+                src={image}
+                alt={imageAlt || title}
+                className="w-full h-52 object-cover"
+                loading="lazy"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent`} />
+            </div>
+          )}
           <div className="bg-neutral-50 rounded-3xl p-8">
             <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wide mb-5">
               Das bringt es Ihnen
@@ -74,6 +85,8 @@ const serviceData = [
     gradient: 'from-violet-500 to-primary-600',
     title: 'KI-Automatisierung',
     tagline: 'Effizienz steigern',
+    image: '/images/ki-automatisierung.jpg',
+    imageAlt: 'Künstliche Intelligenz und Automatisierung – Roboter-Technologie',
     problem: 'Viele Unternehmen verbringen täglich Stunden mit wiederholenden Aufgaben: E-Mails sortieren, Daten erfassen, Berichte erstellen, Kundenkommunikation managen. Das kostet Zeit, Geld und Nerven — und lässt sich größtenteils automatisieren.',
     solution: 'Mit maßgeschneiderten KI-gestützten Workflows automatisiere ich Ihre Geschäftsprozesse. Von einfachen Automatisierungen bis hin zu komplexen KI-Lösungen — so dass Ihr Team sich auf wertschöpfende Aufgaben konzentrieren kann.',
     benefits: [
@@ -90,6 +103,8 @@ const serviceData = [
     gradient: 'from-primary-500 to-cyan-600',
     title: 'Website-Erstellung',
     tagline: 'Online präsent sein',
+    image: '/images/webentwicklung.jpg',
+    imageAlt: 'Professionelle Webentwicklung – Code auf dem Bildschirm',
     problem: 'Eine veraltete oder nicht vorhandene Website kostet täglich potenzielle Kunden. In der digitalen Welt ist Ihre Website oft der erste Eindruck — und der entscheidet, ob jemand Kunde wird oder zur Konkurrenz geht.',
     solution: 'Ich erstelle moderne, schnelle und conversion-optimierte Unternehmenswebsites, die auf Google gefunden werden und Besucher in Kunden verwandeln. Von der Konzeption über das Design bis zur Veröffentlichung — alles aus einer Hand.',
     benefits: [
@@ -106,6 +121,8 @@ const serviceData = [
     gradient: 'from-emerald-500 to-teal-600',
     title: 'Hardware & Software Betreuung',
     tagline: 'IT-Infrastruktur',
+    image: '/images/server-raum.jpg',
+    imageAlt: 'Server-Racks im modernen Rechenzentrum',
     problem: 'IT-Probleme kosten Unternehmen Zeit und Geld. Wenn Rechner langsam laufen, Software nicht richtig konfiguriert ist oder Geräte ausfallen, leidet die Produktivität — und meist gibt es niemanden, der schnell und kompetent hilft.',
     solution: 'Ich übernehme die vollständige Betreuung Ihrer Hard- und Software: Einrichtung neuer Arbeitsplätze, Wartung bestehender Systeme, Software-Updates und -konfiguration sowie Beratung bei IT-Anschaffungen.',
     benefits: [
@@ -122,6 +139,8 @@ const serviceData = [
     gradient: 'from-orange-500 to-amber-600',
     title: 'IT-Support & Systemadministration',
     tagline: 'Zuverlässige Betreuung',
+    image: '/images/it-support.jpg',
+    imageAlt: 'Professioneller IT-Support mit Headset',
     problem: 'IT-Probleme passieren immer zum ungünstigsten Zeitpunkt. Ohne kompetenten Ansprechpartner verlieren Mitarbeiter produktive Stunden bei der Fehlersuche — oder warten tagelang auf Hilfe.',
     solution: 'Als externer IT-Administrator stehe ich Ihnen schnell zur Seite: remote oder vor Ort. Von Windows- und Linux-Systemen über Netzwerke bis hin zur Benutzerverwaltung — ich halte Ihre IT am Laufen.',
     benefits: [
@@ -138,6 +157,8 @@ const serviceData = [
     gradient: 'from-pink-500 to-rose-600',
     title: 'Digitalisierung & Prozessoptimierung',
     tagline: 'Modernisierung',
+    image: '/images/digitalisierung.jpg',
+    imageAlt: 'Prozessplanung und Strategieentwicklung am Whiteboard',
     problem: 'Viele Unternehmen arbeiten noch mit veralteten, manuellen Prozessen. Excel-Tabellen, Papierdokumente, fehlende Automatisierung — das kostet täglich Zeit und verhindert weiteres Wachstum.',
     solution: 'Ich analysiere Ihre bestehenden Abläufe, identifiziere Optimierungspotenziale und entwickle digitale Lösungen, die wirklich helfen. Dabei setze ich auf moderne Tools, die Ihr Team schnell annehmen kann.',
     benefits: [

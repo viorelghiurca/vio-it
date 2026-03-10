@@ -12,12 +12,17 @@ import SEOHead from '../components/ui/SEOHead'
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-20">
-      {/* Background decoration */}
+      {/* Background image */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <img
+          src="/images/hero-workspace.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+          loading="eager"
+        />
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-500/5 rounded-full blur-3xl" />
-        {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -236,6 +241,15 @@ function WhyVioIT() {
               biete ich Ihnen maßgeschneiderte Lösungen, die wirklich funktionieren.
               Keine Standardpakete, sondern individuelle Betreuung, die zu Ihrem Unternehmen passt.
             </p>
+            <div className="relative rounded-2xl overflow-hidden mb-8 shadow-lg">
+              <img
+                src="/images/beratung.jpg"
+                alt="Team-Meeting mit Laptops in einem modernen Tech-Büro"
+                className="w-full h-56 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-950/30 to-transparent" />
+            </div>
             <Link to="/ueber-mich" className="btn-primary">
               Mehr über VIO-IT
               <ArrowRight className="w-4 h-4" />

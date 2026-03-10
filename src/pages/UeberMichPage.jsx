@@ -67,53 +67,73 @@ export default function UeberMichPage() {
 
       {/* Main Content */}
       <section className="section-padding bg-white">
-        <div className="section-container max-w-3xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
-                <Award className="w-5 h-5 text-primary-600" />
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+            {/* Image */}
+            <AnimatedSection direction="left" className="lg:col-span-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl sticky top-28">
+                <img
+                  src="/images/profil-arbeitsplatz.jpg"
+                  alt="Software-Entwickler bei der Arbeit am Computer"
+                  className="w-full h-[420px] object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white font-semibold text-sm">Viorel Ghiurca</p>
+                  <p className="text-primary-200 text-xs">IHK-geprüfter Fachinformatiker</p>
+                </div>
               </div>
-              <div>
-                <span className="badge badge-primary">Meine Geschichte</span>
+            </AnimatedSection>
+
+            {/* Text Content */}
+            <AnimatedSection direction="right" className="lg:col-span-3">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
+                  <Award className="w-5 h-5 text-primary-600" />
+                </div>
+                <div>
+                  <span className="badge badge-primary">Meine Geschichte</span>
+                </div>
               </div>
-            </div>
 
-            <h2 className="text-3xl font-bold text-neutral-900 mb-6 tracking-tight">
-              IT mit Leidenschaft und Expertise
-            </h2>
+              <h2 className="text-3xl font-bold text-neutral-900 mb-6 tracking-tight">
+                IT mit Leidenschaft und Expertise
+              </h2>
 
-            <div className="space-y-4 text-neutral-600 leading-relaxed">
-              <p>
-                Ich bin Viorel Ghiurca — IHK-geprüfter Fachinformatiker und Gründer von VIO-IT.
-                Mit fundierter Ausbildung und praktischer Erfahrung in verschiedenen IT-Bereichen
-                helfe ich kleinen und mittelständischen Unternehmen dabei, die Chancen der
-                Digitalisierung wirklich zu nutzen.
-              </p>
-              <p>
-                Meine Überzeugung: Gute IT ist kein Luxus für Großunternehmen. Auch kleine Betriebe
-                verdienen moderne, zuverlässige und effiziente digitale Lösungen — zu fairen Preisen
-                und mit persönlichem Service.
-              </p>
-              <p>
-                Bei VIO-IT arbeite ich stets auf Augenhöhe mit meinen Kunden. Ich erkläre komplexe
-                Themen verständlich, denke unternehmerisch mit und liefere Ergebnisse, die messbar
-                Mehrwert schaffen.
-              </p>
-            </div>
+              <div className="space-y-4 text-neutral-600 leading-relaxed">
+                <p>
+                  Ich bin Viorel Ghiurca — IHK-geprüfter Fachinformatiker und Gründer von VIO-IT.
+                  Mit fundierter Ausbildung und praktischer Erfahrung in verschiedenen IT-Bereichen
+                  helfe ich kleinen und mittelständischen Unternehmen dabei, die Chancen der
+                  Digitalisierung wirklich zu nutzen.
+                </p>
+                <p>
+                  Meine Überzeugung: Gute IT ist kein Luxus für Großunternehmen. Auch kleine Betriebe
+                  verdienen moderne, zuverlässige und effiziente digitale Lösungen — zu fairen Preisen
+                  und mit persönlichem Service.
+                </p>
+                <p>
+                  Bei VIO-IT arbeite ich stets auf Augenhöhe mit meinen Kunden. Ich erkläre komplexe
+                  Themen verständlich, denke unternehmerisch mit und liefere Ergebnisse, die messbar
+                  Mehrwert schaffen.
+                </p>
+              </div>
 
-            <div className="mt-8 p-5 bg-primary-50 rounded-2xl border border-primary-100">
-              <p className="text-sm font-semibold text-primary-800 mb-1">Mein Ansatz</p>
-              <p className="text-sm text-primary-700">
-                Erst verstehen, dann lösen. Jedes Unternehmen ist einzigartig — deshalb bekommt
-                jeder Kunde individuelle Lösungen statt Standardpakete.
-              </p>
-            </div>
+              <div className="mt-8 p-5 bg-primary-50 rounded-2xl border border-primary-100">
+                <p className="text-sm font-semibold text-primary-800 mb-1">Mein Ansatz</p>
+                <p className="text-sm text-primary-700">
+                  Erst verstehen, dann lösen. Jedes Unternehmen ist einzigartig — deshalb bekommt
+                  jeder Kunde individuelle Lösungen statt Standardpakete.
+                </p>
+              </div>
 
-            <Link to="/kontakt" className="btn-primary btn-lg mt-8">
-              Jetzt Erstgespräch vereinbaren
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </AnimatedSection>
+              <Link to="/kontakt" className="btn-primary btn-lg mt-8">
+                Jetzt Erstgespräch vereinbaren
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
