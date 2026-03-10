@@ -61,12 +61,6 @@ coverage/
 # ── TypeScript ────────────────────────────────────────────────────────────────
 *.tsbuildinfo
 
-# ── Firebase ─────────────────────────────────────────────────────────────────
-.firebase/
-firebase-debug.log
-firestore-debug.log
-ui-debug.log
-
 # ── Archiv & Temp ─────────────────────────────────────────────────────────────
 *.zip
 *.tar.gz
