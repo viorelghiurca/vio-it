@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
+import BgImage from '../components/ui/BgImage'
 import { checkSpam, markSubmitted } from '../lib/spamProtection'
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
@@ -79,8 +80,9 @@ export default function KontaktPage() {
         canonical="/kontakt"
       />
 
-      <div className="bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20">
-        <div className="section-container text-center">
+      <div className="relative bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20 overflow-hidden">
+        <BgImage src="/images/kontakt-laptop.jpg" />
+        <div className="section-container text-center relative z-10">
           <AnimatedSection>
             <span className="badge bg-white/10 text-primary-200 mb-4">Kontakt</span>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">

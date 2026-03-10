@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
+import BgImage from '../components/ui/BgImage'
 
 // ── Service Detail Block ──────────────────────────────────────────────────────
 function ServiceBlock({ id, icon, gradient, title, tagline, problem, solution, benefits, cta, image, imageAlt }) {
@@ -194,8 +195,9 @@ export default function LeistungenPage() {
       />
 
       {/* Header */}
-      <div className="bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20">
-        <div className="section-container text-center">
+      <div className="relative bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20 overflow-hidden">
+        <BgImage src="/images/webentwicklung.jpg" />
+        <div className="section-container text-center relative z-10">
           <AnimatedSection>
             <span className="badge bg-white/10 text-primary-200 mb-4">Leistungen</span>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -242,6 +244,7 @@ export default function LeistungenPage() {
         <div className="section-container">
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 to-primary-900 p-10 lg:p-16 text-center">
+              <BgImage src="/images/hero-workspace.jpg" opacity="opacity-[0.10]" />
               <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold text-white mb-4">

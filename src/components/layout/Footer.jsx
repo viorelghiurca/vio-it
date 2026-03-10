@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink } from 'lucide-react'
+import BgImage from '../ui/BgImage'
 
 const services = [
   { label: 'KI-Automatisierung',        to: '/leistungen#ki-automatisierung' },
@@ -19,8 +20,9 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-neutral-950 text-neutral-400">
-      <div className="section-container py-16 lg:py-20">
+    <footer className="relative bg-neutral-950 text-neutral-400 overflow-hidden">
+      <BgImage src="/images/server-raum.jpg" opacity="opacity-[0.04]" />
+      <div className="section-container py-16 lg:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {/* Brand */}

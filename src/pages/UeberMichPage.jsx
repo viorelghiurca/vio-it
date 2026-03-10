@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
+import BgImage from '../components/ui/BgImage'
 
 const skills = [
   { name: 'KI-Automatisierung & Workflows', icon: <Bot className="w-4 h-4" /> },
@@ -51,8 +52,9 @@ export default function UeberMichPage() {
       />
 
       {/* Page Header */}
-      <div className="bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20">
-        <div className="section-container text-center">
+      <div className="relative bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-32 pb-20 overflow-hidden">
+        <BgImage src="/images/profil-arbeitsplatz.jpg" />
+        <div className="section-container text-center relative z-10">
           <AnimatedSection>
             <span className="badge bg-white/10 text-primary-200 mb-4">Über mich</span>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -189,8 +191,9 @@ export default function UeberMichPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-br from-primary-600 to-primary-900">
-        <div className="section-container text-center">
+      <section className="relative section-padding bg-gradient-to-br from-primary-600 to-primary-900 overflow-hidden">
+        <BgImage src="/images/beratung.jpg" opacity="opacity-[0.10]" />
+        <div className="section-container text-center relative z-10">
           <AnimatedSection>
             <h2 className="text-3xl font-bold text-white mb-4">
               Überzeugt? Lassen Sie uns sprechen.

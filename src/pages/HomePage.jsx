@@ -7,6 +7,7 @@ import {
 import { motion } from 'framer-motion'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
+import BgImage from '../components/ui/BgImage'
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
@@ -14,12 +15,7 @@ function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-neutral-950 via-primary-950 to-neutral-900 pt-20">
       {/* Background image */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <img
-          src="/images/hero-workspace.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
-          loading="eager"
-        />
+        <BgImage src="/images/hero-workspace.jpg" />
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-500/5 rounded-full blur-3xl" />
@@ -120,6 +116,7 @@ const services = [
     desc: 'Wiederholende Prozesse automatisieren und Effizienz durch KI-gestützte Workflows steigern.',
     to: '/leistungen#ki-automatisierung',
     color: 'from-violet-500 to-primary-600',
+    image: '/images/ki-automatisierung.jpg',
   },
   {
     icon: <Globe className="w-6 h-6" />,
@@ -127,6 +124,7 @@ const services = [
     desc: 'Moderne, performante und conversion-optimierte Unternehmenswebsites mit SEO von Anfang an.',
     to: '/leistungen#website-erstellung',
     color: 'from-primary-500 to-cyan-600',
+    image: '/images/webentwicklung.jpg',
   },
   {
     icon: <Server className="w-6 h-6" />,
@@ -134,6 +132,7 @@ const services = [
     desc: 'Professionelle Einrichtung, Wartung und Betreuung Ihrer gesamten IT-Infrastruktur.',
     to: '/leistungen#hardware-software',
     color: 'from-emerald-500 to-teal-600',
+    image: '/images/server-raum.jpg',
   },
   {
     icon: <Headphones className="w-6 h-6" />,
@@ -141,6 +140,7 @@ const services = [
     desc: 'Zuverlässiger technischer Support für Windows, Linux, Netzwerke und Benutzerverwaltung.',
     to: '/leistungen#it-support',
     color: 'from-orange-500 to-amber-600',
+    image: '/images/it-support.jpg',
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
@@ -148,8 +148,34 @@ const services = [
     desc: 'Bestehende Prozesse analysieren, optimieren und digitale Lösungen entwickeln, die wirklich helfen.',
     to: '/leistungen#digitalisierung',
     color: 'from-pink-500 to-rose-600',
+    image: '/images/digitalisierung.jpg',
   },
 ]
+
+function ServiceThumb({ image, icon, color, title }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed || !image) {
+    return (
+      <div className={`h-32 bg-gradient-to-br ${color} flex items-center justify-center text-white/80`}>
+        <div className="w-10 h-10">{icon}</div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative h-32 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent`} />
+    </div>
+  )
+}
 
 function ServicesOverview() {
   return (
@@ -167,14 +193,14 @@ function ServicesOverview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {services.map((s, i) => (
             <AnimatedSection key={s.title} delay={i * 80}>
-              <Link to={s.to} className="card-hover p-6 flex flex-col h-full group">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                  {s.icon}
-                </div>
-                <h3 className="text-base font-semibold text-neutral-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed flex-1">{s.desc}</p>
-                <div className="flex items-center gap-1.5 mt-4 text-primary-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Mehr erfahren <ArrowRight className="w-3.5 h-3.5" />
+              <Link to={s.to} className="card-hover flex flex-col h-full group overflow-hidden">
+                <ServiceThumb image={s.image} icon={s.icon} color={s.color} title={s.title} />
+                <div className="p-5 pt-4 flex flex-col flex-1">
+                  <h3 className="text-base font-semibold text-neutral-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed flex-1">{s.desc}</p>
+                  <div className="flex items-center gap-1.5 mt-4 text-primary-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Mehr erfahren <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
               </Link>
             </AnimatedSection>
@@ -287,8 +313,9 @@ const steps = [
 
 function HowWeWork() {
   return (
-    <section className="section-padding bg-gradient-to-br from-primary-950 to-neutral-950">
-      <div className="section-container">
+    <section className="relative section-padding bg-gradient-to-br from-primary-950 to-neutral-950 overflow-hidden">
+      <BgImage src="/images/beratung.jpg" />
+      <div className="section-container relative z-10">
         <AnimatedSection className="text-center mb-16">
           <span className="badge bg-white/10 text-primary-200 mb-4">So läuft es ab</span>
           <h2 className="section-title text-white mb-4">
@@ -416,6 +443,7 @@ function CTABanner() {
       <div className="section-container">
         <AnimatedSection>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 p-10 lg:p-16 text-center">
+            <BgImage src="/images/hero-workspace.jpg" opacity="opacity-[0.10]" />
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
             <div className="relative z-10">
