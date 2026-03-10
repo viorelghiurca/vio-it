@@ -37,7 +37,7 @@ function ServiceBlock({ id, icon, gradient, title, tagline, problem, solution, b
             </div>
           </div>
 
-          <Link to="/termin" className="btn-primary">
+          <Link to="/kontakt" className="btn-primary">
             {cta || 'Beratung anfragen'}
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -231,10 +231,10 @@ export default function LeistungenPage() {
                   welche Lösung am besten zu Ihrem Unternehmen passt.
                 </p>
                 <Link
-                  to="/termin"
+                  to="/kontakt"
                   className="inline-flex items-center gap-2 px-8 py-4 text-primary-700 bg-white font-semibold rounded-xl hover:bg-primary-50 transition-colors shadow-lg"
                 >
-                  Kostenloses Erstgespräch buchen
+                  Kostenloses Erstgespräch anfragen
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>

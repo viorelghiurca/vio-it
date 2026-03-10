@@ -4,12 +4,13 @@ import toast from 'react-hot-toast'
 import { useState, useRef } from 'react'
 import {
   Mail, MapPin, Clock, MessageCircle, User,
-  Building2, Phone, Send, CheckCircle2, ArrowRight
+  Building2, Phone, Send, CheckCircle2
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SEOHead from '../components/ui/SEOHead'
-import { saveContactRequest } from '../lib/firestore'
 import { checkSpam, markSubmitted } from '../lib/spamProtection'
+
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
 
 const subjects = [
   'KI-Automatisierung',
@@ -17,6 +18,7 @@ const subjects = [
   'Hardware & Software Betreuung',
   'IT-Support & Systemadministration',
   'Digitalisierung & Beratung',
+  'Kostenloses Erstgespräch',
   'Allgemeine Anfrage',
   'Sonstiges',
 ]
@@ -36,11 +38,31 @@ export default function KontaktPage() {
 
     setIsSubmitting(true)
     try {
-      await saveContactRequest(data)
-      markSubmitted('kontakt')
-      setSubmitted(true)
-      reset()
-      toast.success('Nachricht erfolgreich gesendet!')
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Neue Anfrage: ${data.betreff}`,
+          from_name: 'VIO-IT Website',
+          name: data.name,
+          email: data.email,
+          firma: data.firma || '—',
+          telefon: data.telefon || '—',
+          betreff: data.betreff,
+          nachricht: data.nachricht,
+        }),
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        markSubmitted('kontakt')
+        setSubmitted(true)
+        reset()
+        toast.success('Nachricht erfolgreich gesendet!')
+      } else {
+        throw new Error(result.message || 'Unbekannter Fehler')
+      }
     } catch (err) {
       console.error(err)
       toast.error('Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an mail@viorelghiurca.de')
@@ -65,7 +87,7 @@ export default function KontaktPage() {
               Wie kann ich Ihnen helfen?
             </h1>
             <p className="text-primary-200 text-lg max-w-xl mx-auto">
-              Stellen Sie mir Ihre Frage oder beschreiben Sie Ihr Anliegen — ich melde mich schnell zurück.
+              Stellen Sie mir Ihre Frage oder beschreiben Sie Ihr Anliegen — ich melde mich so schnell wie möglich zurück.
             </p>
           </AnimatedSection>
         </div>
@@ -101,15 +123,11 @@ export default function KontaktPage() {
 
                 <div className="p-5 bg-primary-50 rounded-2xl border border-primary-100">
                   <p className="text-sm font-semibold text-primary-800 mb-2">
-                    Lieber direkt einen Termin?
+                    Schnelle Rückmeldung garantiert
                   </p>
-                  <p className="text-xs text-primary-600 mb-4">
-                    Buchen Sie jetzt Ihr kostenloses Erstgespräch — unverbindlich und schnell.
+                  <p className="text-xs text-primary-600">
+                    Ich melde mich in der Regel innerhalb weniger Stunden bei Ihnen zurück — persönlich und unverbindlich.
                   </p>
-                  <Link to="/termin" className="btn-primary w-full justify-center text-xs">
-                    Termin buchen
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
                 </div>
               </div>
             </AnimatedSection>
@@ -137,7 +155,7 @@ export default function KontaktPage() {
                   <h2 className="text-xl font-bold text-neutral-900 mb-6">Nachricht senden</h2>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                    {/* Honeypot – unsichtbar für echte Nutzer, Bots füllen es aus */}
+                    {/* Honeypot */}
                     <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', tabIndex: -1 }}>
                       <label htmlFor="website">Website</label>
                       <input

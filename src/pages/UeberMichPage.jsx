@@ -130,7 +130,7 @@ export default function UeberMichPage() {
                 </p>
               </div>
 
-              <Link to="/termin" className="btn-primary btn-lg mt-8">
+              <Link to="/kontakt" className="btn-primary btn-lg mt-8">
                 Jetzt Erstgespräch vereinbaren
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -201,10 +201,10 @@ export default function UeberMichPage() {
               Kostenloses und unverbindliches Erstgespräch — ich freue mich auf Ihre Herausforderung.
             </p>
             <Link
-              to="/termin"
+              to="/kontakt"
               className="inline-flex items-center gap-2 px-8 py-4 text-primary-700 bg-white font-semibold rounded-xl hover:bg-primary-50 transition-colors shadow-lg"
             >
-              Termin vereinbaren
+              Nachricht senden
               <ArrowRight className="w-5 h-5" />
             </Link>
           </AnimatedSection>

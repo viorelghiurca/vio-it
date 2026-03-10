@@ -61,7 +61,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.44 }}
           >
-            <Link to="/termin" className="btn-primary btn-lg text-base">
+            <Link to="/kontakt" className="btn-primary btn-lg text-base">
               Kostenloses Erstgespräch
               <ChevronRight className="w-5 h-5" />
             </Link>
@@ -414,17 +414,17 @@ function CTABanner() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to="/termin"
+                  to="/kontakt"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-primary-700 bg-white rounded-xl hover:bg-primary-50 transition-colors shadow-lg"
                 >
-                  Jetzt Termin buchen
+                  Jetzt Anfrage senden
                   <ChevronRight className="w-5 h-5" />
                 </Link>
                 <Link
-                  to="/kontakt"
+                  to="/leistungen"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/30 rounded-xl hover:bg-white/10 transition-colors"
                 >
-                  Kontakt aufnehmen
+                  Leistungen entdecken
                 </Link>
               </div>
             </div>

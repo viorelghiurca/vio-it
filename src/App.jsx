@@ -11,18 +11,15 @@ const colors = {
   accent500:  '#10b981',
   red500:     '#ef4444',
 }
-import CookieBanner from './components/ui/CookieBanner'
 
 import HomePage from './pages/HomePage'
 import UeberMichPage from './pages/UeberMichPage'
 import LeistungenPage from './pages/LeistungenPage'
-import TerminPage from './pages/TerminPage'
 import KontaktPage from './pages/KontaktPage'
 import ImpressumPage from './pages/legal/ImpressumPage'
 import DatenschutzPage from './pages/legal/DatenschutzPage'
 import CookiePage from './pages/legal/CookiePage'
 import NotFoundPage from './pages/NotFoundPage'
-import StornierungPage from './pages/StornierungPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -35,43 +32,40 @@ function ScrollToTop() {
 export default function App() {
   return (
     <CookieProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Toaster
-          position="bottom-right"
-            toastOptions={{
-              duration: 5000,
-              style: {
-                borderRadius: '16px',
-                background: colors.neutral800,
-                color: colors.neutral50,
-                fontSize: '14px',
-                fontFamily: 'Inter, sans-serif',
-              },
-              success: {
-                iconTheme: { primary: colors.accent500, secondary: colors.neutral50 },
-              },
-              error: {
-                iconTheme: { primary: colors.red500, secondary: colors.neutral50 },
-              },
-            }}
-        />
-        <CookieBanner />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="ueber-mich" element={<UeberMichPage />} />
-            <Route path="leistungen" element={<LeistungenPage />} />
-            <Route path="termin" element={<TerminPage />} />
-            <Route path="kontakt" element={<KontaktPage />} />
-            <Route path="impressum" element={<ImpressumPage />} />
-            <Route path="datenschutz" element={<DatenschutzPage />} />
-            <Route path="cookie-richtlinie" element={<CookiePage />} />
-            <Route path="stornierung/:bookingId" element={<StornierungPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Toaster
+        position="bottom-right"
+          toastOptions={{
+            duration: 5000,
+            style: {
+              borderRadius: '16px',
+              background: colors.neutral800,
+              color: colors.neutral50,
+              fontSize: '14px',
+              fontFamily: 'Inter, sans-serif',
+            },
+            success: {
+              iconTheme: { primary: colors.accent500, secondary: colors.neutral50 },
+            },
+            error: {
+              iconTheme: { primary: colors.red500, secondary: colors.neutral50 },
+            },
+          }}
+      />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="ueber-mich" element={<UeberMichPage />} />
+          <Route path="leistungen" element={<LeistungenPage />} />
+          <Route path="kontakt" element={<KontaktPage />} />
+          <Route path="impressum" element={<ImpressumPage />} />
+          <Route path="datenschutz" element={<DatenschutzPage />} />
+          <Route path="cookie-richtlinie" element={<CookiePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </CookieProvider>
   )
 }

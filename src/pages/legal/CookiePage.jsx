@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useCookieConsent } from '../../context/CookieContext'
 import SEOHead from '../../components/ui/SEOHead'
 import AnimatedSection from '../../components/ui/AnimatedSection'
-import { Shield, BarChart2, CheckCircle2, X } from 'lucide-react'
+import { Shield, CheckCircle2 } from 'lucide-react'
 
 function LegalSection({ title, children }) {
   return (
@@ -14,7 +14,7 @@ function LegalSection({ title, children }) {
 }
 
 export default function CookiePage() {
-  const { consent, acceptAll, acceptNecessary, resetConsent } = useCookieConsent()
+  const { consent, acceptNecessary, resetConsent } = useCookieConsent()
 
   return (
     <>
@@ -44,24 +44,17 @@ export default function CookiePage() {
                 <p className="text-sm font-semibold text-neutral-900 mb-4">Ihr aktueller Cookie-Status</p>
                 {consent ? (
                   <div className="space-y-3">
-                    <ConsentRow
-                      icon={<Shield className="w-4 h-4" />}
-                      label="Notwendige Cookies"
-                      active={consent.necessary}
-                      locked
-                    />
-                    <ConsentRow
-                      icon={<BarChart2 className="w-4 h-4" />}
-                      label="Analytische Cookies (Firebase Analytics)"
-                      active={consent.analytics}
-                    />
+                    <div className="flex items-center justify-between gap-4 py-2">
+                      <div className="flex items-center gap-2.5 text-sm text-neutral-700">
+                        <span className="text-neutral-400"><Shield className="w-4 h-4" /></span>
+                        Notwendige Cookies
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-medium text-accent-600">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        Immer aktiv
+                      </div>
+                    </div>
                     <div className="flex gap-3 pt-3 border-t border-neutral-200">
-                      <button onClick={acceptAll} className="btn-primary text-xs">
-                        Alle akzeptieren
-                      </button>
-                      <button onClick={acceptNecessary} className="btn-outline text-xs">
-                        Nur Notwendige
-                      </button>
                       <button onClick={resetConsent} className="text-xs text-neutral-500 hover:text-red-500 transition-colors">
                         Einstellungen zurücksetzen
                       </button>
@@ -71,8 +64,7 @@ export default function CookiePage() {
                   <div className="space-y-3">
                     <p className="text-neutral-500 text-xs">Sie haben Ihre Cookie-Einstellungen noch nicht festgelegt.</p>
                     <div className="flex gap-3">
-                      <button onClick={acceptAll} className="btn-primary text-xs">Alle akzeptieren</button>
-                      <button onClick={acceptNecessary} className="btn-outline text-xs">Nur Notwendige</button>
+                      <button onClick={acceptNecessary} className="btn-primary text-xs">Akzeptieren</button>
                     </div>
                   </div>
                 )}
@@ -87,24 +79,43 @@ export default function CookiePage() {
               </LegalSection>
 
               <LegalSection title="Welche Cookies verwenden wir?">
-                <div className="space-y-4">
-                  <CookieTable
-                    category="Notwendige Cookies"
-                    icon={<Shield className="w-4 h-4 text-accent-600" />}
-                    description="Diese Cookies sind für den Betrieb der Website unbedingt erforderlich. Ohne sie kann die Website nicht ordnungsgemäß funktionieren."
-                    always
-                    cookies={[
-                      { name: 'vio-it-cookie-consent', purpose: 'Speichert Ihre Cookie-Einwilligung (localStorage)', duration: '1 Jahr (automatisches Ablaufdatum)' },
-                    ]}
-                  />
-                  <CookieTable
-                    category="Analytische Cookies"
-                    icon={<BarChart2 className="w-4 h-4 text-primary-600" />}
-                    description="Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern. Sie werden nur nach Ihrer ausdrücklichen Einwilligung gesetzt."
-                    cookies={[
-                      { name: 'Firebase Analytics', purpose: 'Anonymisierte Seitenaufrufanalyse (Google LLC)', duration: 'Session / Persistent' },
-                    ]}
-                  />
+                <p className="mb-4">
+                  Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine
+                  Tracking-, Analyse- oder Marketing-Cookies eingesetzt.
+                </p>
+                <div className="border border-neutral-200 rounded-xl overflow-hidden">
+                  <div className="flex items-center justify-between gap-3 px-4 py-3 bg-neutral-50 border-b border-neutral-200">
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-accent-600" />
+                      <span className="text-sm font-semibold text-neutral-800">Notwendige Cookies</span>
+                    </div>
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent-100 text-accent-700">
+                      Immer aktiv
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-neutral-500 mb-4">
+                      Diese Cookies sind für den Betrieb der Website unbedingt erforderlich.
+                    </p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs">
+                        <thead>
+                          <tr className="text-left text-neutral-400 border-b border-neutral-100">
+                            <th className="pb-2 pr-4 font-medium">Name</th>
+                            <th className="pb-2 pr-4 font-medium">Zweck</th>
+                            <th className="pb-2 font-medium">Dauer</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="py-2 pr-4 font-mono text-neutral-600">vio-it-cookie-consent</td>
+                            <td className="py-2 pr-4 text-neutral-500">Speichert Ihre Cookie-Einwilligung (localStorage)</td>
+                            <td className="py-2 text-neutral-500">1 Jahr</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </LegalSection>
 
@@ -122,59 +133,5 @@ export default function CookiePage() {
         </div>
       </section>
     </>
-  )
-}
-
-function ConsentRow({ icon, label, active, locked }) {
-  return (
-    <div className="flex items-center justify-between gap-4 py-2">
-      <div className="flex items-center gap-2.5 text-sm text-neutral-700">
-        <span className="text-neutral-400">{icon}</span>
-        {label}
-      </div>
-      <div className={`flex items-center gap-1.5 text-xs font-medium ${active ? 'text-accent-600' : 'text-neutral-400'}`}>
-        {active ? <CheckCircle2 className="w-3.5 h-3.5" /> : <X className="w-3.5 h-3.5" />}
-        {locked ? 'Immer aktiv' : active ? 'Aktiv' : 'Inaktiv'}
-      </div>
-    </div>
-  )
-}
-
-function CookieTable({ category, icon, description, cookies, always }) {
-  return (
-    <div className="border border-neutral-200 rounded-xl overflow-hidden">
-      <div className="flex items-center justify-between gap-3 px-4 py-3 bg-neutral-50 border-b border-neutral-200">
-        <div className="flex items-center gap-2">
-          {icon}
-          <span className="text-sm font-semibold text-neutral-800">{category}</span>
-        </div>
-        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${always ? 'bg-accent-100 text-accent-700' : 'bg-primary-100 text-primary-700'}`}>
-          {always ? 'Immer aktiv' : 'Optional'}
-        </span>
-      </div>
-      <div className="p-4">
-        <p className="text-xs text-neutral-500 mb-4">{description}</p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="text-left text-neutral-400 border-b border-neutral-100">
-                <th className="pb-2 pr-4 font-medium">Name</th>
-                <th className="pb-2 pr-4 font-medium">Zweck</th>
-                <th className="pb-2 font-medium">Dauer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cookies.map(c => (
-                <tr key={c.name} className="border-b border-neutral-50 last:border-0">
-                  <td className="py-2 pr-4 font-mono text-neutral-600">{c.name}</td>
-                  <td className="py-2 pr-4 text-neutral-500">{c.purpose}</td>
-                  <td className="py-2 text-neutral-500">{c.duration}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
   )
 }

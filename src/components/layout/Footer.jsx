@@ -88,13 +88,13 @@ export default function Footer() {
 
             <div className="mt-8">
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Termin buchen
+                Kontakt aufnehmen
               </h4>
               <Link
-                to="/termin"
+                to="/kontakt"
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-500 transition-colors"
               >
-                Erstgespräch vereinbaren
+                Nachricht senden
                 <ExternalLink className="w-3.5 h-3.5" />
               </Link>
             </div>

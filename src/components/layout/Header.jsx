@@ -75,7 +75,7 @@ export default function Header() {
 
           {/* CTA Desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/termin" className={`btn-lg transition-all duration-300 ${scrolled ? 'btn-primary' : 'inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/30 rounded-xl hover:bg-white/10'}`}>
+            <Link to="/kontakt" className={`btn-lg transition-all duration-300 ${scrolled ? 'btn-primary' : 'inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/30 rounded-xl hover:bg-white/10'}`}>
               Kostenloses Erstgespräch
               <ChevronRight className="w-4 h-4" />
             </Link>
@@ -116,7 +116,7 @@ export default function Header() {
             </NavLink>
           ))}
           <div className="pt-4 border-t border-neutral-100">
-            <Link to="/termin" className="btn-primary w-full justify-center">
+            <Link to="/kontakt" className="btn-primary w-full justify-center">
               Kostenloses Erstgespräch
               <ChevronRight className="w-4 h-4" />
             </Link>
