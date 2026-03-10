@@ -81,6 +81,7 @@ export default function DatenschutzPage() {
                 <ul className="list-disc list-inside space-y-1">
                   <li><strong>Kontaktanfragen:</strong> 6 Monate nach Abschluss der Kommunikation</li>
                   <li><strong>Cookie-Einwilligung:</strong> Automatisches Ablaufdatum nach 1 Jahr (localStorage)</li>
+                  <li><strong>Spam-Schutz:</strong> Zeitstempel der letzten Formularabsendung, automatische Löschung nach 60 Sekunden (localStorage)</li>
                 </ul>
                 <p className="mt-3">
                   Gesetzliche Aufbewahrungspflichten (z.&nbsp;B. steuerrechtlich) bleiben hiervon unberührt.

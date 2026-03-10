@@ -107,10 +107,15 @@ export default function CookiePage() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <tr className="border-b border-neutral-50">
                             <td className="py-2 pr-4 font-mono text-neutral-600">vio-it-cookie-consent</td>
                             <td className="py-2 pr-4 text-neutral-500">Speichert Ihre Cookie-Einwilligung (localStorage)</td>
                             <td className="py-2 text-neutral-500">1 Jahr</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 pr-4 font-mono text-neutral-600">_lastSubmit_kontakt</td>
+                            <td className="py-2 pr-4 text-neutral-500">Spam-Schutz: verhindert mehrfaches Absenden des Kontaktformulars innerhalb von 60 Sekunden (localStorage)</td>
+                            <td className="py-2 text-neutral-500">60 Sekunden</td>
                           </tr>
                         </tbody>
                       </table>
