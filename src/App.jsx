@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { CookieProvider } from './context/CookieContext'
 
 import Layout from './components/layout/Layout'
+import CookieBanner from './components/ui/CookieBanner'
 
 const colors = {
   neutral800: '#1f2937',
@@ -53,6 +54,7 @@ export default function App() {
             },
           }}
       />
+      <CookieBanner />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

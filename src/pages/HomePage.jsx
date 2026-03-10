@@ -524,10 +524,15 @@ export default function HomePage() {
         canonical="/"
       />
       <Hero />
+      <SectionFade from="#111827" to="#f9fafb" className="h-24 md:h-32" />
       <ServicesOverview />
+      <SectionFade from="#f9fafb" to="#ffffff" className="h-16 md:h-20" />
       <WhyVioIT />
+      <SectionFade from="#ffffff" to="#1e1b4b" className="h-24 md:h-32" />
       <HowWeWork />
+      <SectionFade from="#030712" to="#f9fafb" className="h-24 md:h-32" />
       <FAQ />
+      <SectionFade from="#f9fafb" to="#ffffff" className="h-16 md:h-20" />
       <CTABanner />
     </>
   )
