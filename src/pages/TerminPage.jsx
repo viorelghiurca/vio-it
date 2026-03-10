@@ -13,32 +13,12 @@ import { saveAppointment, getBookingsMap } from '../lib/firestore'
 import { sendCustomerConfirmation, sendAdminNotification } from '../lib/emailService'
 import { checkSpam, markSubmitted } from '../lib/spamProtection'
 
-const appointmentTypes = [
-  {
-    id: 'erstgespraech',
-    icon: <MessageCircle className="w-5 h-5" />,
-    title: 'Kostenloses Erstgespräch',
-    desc: '30 Min. — Kennenlernen & Bedarfsanalyse',
-    duration: '30 Minuten',
-    free: true,
-  },
-  {
-    id: 'beratung',
-    icon: <Calendar className="w-5 h-5" />,
-    title: 'Ausführliche Beratung',
-    desc: '60 Min. — Tiefergehende Analyse & Konzept',
-    duration: '60 Minuten',
-    free: false,
-  },
-  {
-    id: 'it-analyse',
-    icon: <CheckCircle2 className="w-5 h-5" />,
-    title: 'IT-Infrastruktur Analyse',
-    desc: '90 Min. — Vollständiger IT-Check Ihres Unternehmens',
-    duration: '90 Minuten',
-    free: false,
-  },
-]
+const appointmentType = {
+  id: 'erstgespraech',
+  title: 'Kostenloses Erstgespräch',
+  desc: '30 Min. — Kennenlernen & Bedarfsanalyse',
+  duration: '30 Minuten',
+}
 
 const timeSlots = [
   '09:00 Uhr', '09:30 Uhr', '10:00 Uhr', '10:30 Uhr',
@@ -48,7 +28,7 @@ const timeSlots = [
 
 export default function TerminPage() {
   const [step, setStep] = useState(1)
-  const [selectedType, setSelectedType] = useState(null)
+  const [selectedType] = useState('erstgespraech')
   const [selectedDate, setSelectedDate] = useState(null)
   const [selectedTime, setSelectedTime] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -110,7 +90,7 @@ export default function TerminPage() {
       const id = await saveAppointment(bookingData)
       markSubmitted('termin')
       setBookingId(id)
-      setStep(4)
+      setStep(3)
       toast.success('Termin erfolgreich gebucht!')
 
       Promise.allSettled([
@@ -151,10 +131,10 @@ export default function TerminPage() {
         <div className="section-container max-w-3xl">
 
           {/* Progress Indicator */}
-          {step < 4 && (
+          {step < 3 && (
             <AnimatedSection className="mb-10">
               <div className="flex items-center gap-3">
-                {[1, 2, 3].map((s) => (
+                {[1, 2].map((s) => (
                   <div key={s} className="flex items-center gap-3 flex-1">
                     <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold transition-all ${
                       step > s ? 'bg-accent-500 text-white' :
@@ -164,84 +144,19 @@ export default function TerminPage() {
                       {step > s ? <CheckCircle2 className="w-4 h-4" /> : s}
                     </div>
                     <span className={`text-sm font-medium hidden sm:block ${step >= s ? 'text-neutral-800' : 'text-neutral-400'}`}>
-                      {s === 1 ? 'Terminart' : s === 2 ? 'Datum & Zeit' : 'Ihre Daten'}
+                      {s === 1 ? 'Datum & Zeit' : 'Ihre Daten'}
                     </span>
-                    {s < 3 && <div className={`flex-1 h-0.5 ${step > s ? 'bg-accent-400' : 'bg-neutral-200'}`} />}
+                    {s < 2 && <div className={`flex-1 h-0.5 ${step > s ? 'bg-accent-400' : 'bg-neutral-200'}`} />}
                   </div>
                 ))}
               </div>
             </AnimatedSection>
           )}
 
-          {/* Step 1: Terminart */}
+          {/* Step 1: Datum & Zeit */}
           {step === 1 && (
             <AnimatedSection>
               <div className="bg-white rounded-2xl shadow-card border border-neutral-100 p-8">
-                <h2 className="text-xl font-bold text-neutral-900 mb-2">Welche Art von Termin?</h2>
-                <p className="text-sm text-neutral-500 mb-6">Wählen Sie den passenden Gesprächstyp für Ihre Situation.</p>
-
-                <div className="space-y-4 mb-8">
-                  {appointmentTypes.map(type => (
-                    <button
-                      key={type.id}
-                      onClick={() => setSelectedType(type.id)}
-                      className={`w-full flex items-start gap-4 p-5 rounded-xl border-2 text-left transition-all duration-200 ${
-                        selectedType === type.id
-                          ? 'border-primary-500 bg-primary-50'
-                          : 'border-neutral-200 hover:border-primary-200 hover:bg-neutral-50'
-                      }`}
-                    >
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        selectedType === type.id ? 'bg-primary-600 text-white' : 'bg-neutral-100 text-neutral-500'
-                      }`}>
-                        {type.icon}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-semibold text-neutral-900">{type.title}</span>
-                          {type.free && (
-                            <span className="px-2 py-0.5 text-xs font-semibold bg-accent-100 text-accent-700 rounded-full">
-                              Kostenlos
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-neutral-500">{type.desc}</p>
-                      </div>
-                      <div className={`w-5 h-5 rounded-full border-2 shrink-0 mt-0.5 transition-all ${
-                        selectedType === type.id
-                          ? 'border-primary-600 bg-primary-600'
-                          : 'border-neutral-300'
-                      }`}>
-                        {selectedType === type.id && (
-                          <div className="w-full h-full rounded-full bg-white scale-[0.4] block" />
-                        )}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => selectedType && setStep(2)}
-                  disabled={!selectedType}
-                  className="btn-primary w-full justify-center btn-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
-                >
-                  Weiter
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </AnimatedSection>
-          )}
-
-          {/* Step 2: Datum & Zeit */}
-          {step === 2 && (
-            <AnimatedSection>
-              <div className="bg-white rounded-2xl shadow-card border border-neutral-100 p-8">
-                <button
-                  onClick={() => setStep(1)}
-                  className="text-sm text-primary-600 hover:text-primary-700 mb-4 flex items-center gap-1"
-                >
-                  ← Zurück
-                </button>
                 <h2 className="text-xl font-bold text-neutral-900 mb-2">Wann passt es Ihnen?</h2>
                 <p className="text-sm text-neutral-500 mb-6">Wählen Sie Ihren Wunschtermin.</p>
 
@@ -307,7 +222,7 @@ export default function TerminPage() {
                 </div>
 
                 <button
-                  onClick={() => selectedDate && selectedTime && setStep(3)}
+                  onClick={() => selectedDate && selectedTime && setStep(2)}
                   disabled={!selectedDate || !selectedTime}
                   className="btn-primary w-full justify-center btn-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
                 >
@@ -318,11 +233,11 @@ export default function TerminPage() {
             </AnimatedSection>
           )}
 
-          {/* Step 3: Kontaktdaten */}
-          {step === 3 && (
+          {/* Step 2: Kontaktdaten */}
+          {step === 2 && (
             <AnimatedSection>
               <div className="bg-white rounded-2xl shadow-card border border-neutral-100 p-8">
-                <button onClick={() => setStep(2)} className="text-sm text-primary-600 hover:text-primary-700 mb-4 flex items-center gap-1">
+                <button onClick={() => setStep(1)} className="text-sm text-primary-600 hover:text-primary-700 mb-4 flex items-center gap-1">
                   ← Zurück
                 </button>
                 <h2 className="text-xl font-bold text-neutral-900 mb-2">Ihre Kontaktdaten</h2>
@@ -342,7 +257,7 @@ export default function TerminPage() {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <MessageCircle className="w-3.5 h-3.5" />
-                      {appointmentTypes.find(t => t.id === selectedType)?.title}
+                      {appointmentType.title}
                     </span>
                   </div>
                 </div>
@@ -463,8 +378,8 @@ export default function TerminPage() {
             </AnimatedSection>
           )}
 
-          {/* Step 4: Bestätigung */}
-          {step === 4 && (
+          {/* Step 3: Bestätigung */}
+          {step === 3 && (
             <AnimatedSection>
               <div className="bg-white rounded-2xl shadow-card border border-neutral-100 p-10 text-center">
                 <div className="w-20 h-20 rounded-full bg-accent-100 flex items-center justify-center mx-auto mb-6">
@@ -494,7 +409,7 @@ export default function TerminPage() {
                     </p>
                     <p className="flex items-center gap-2">
                       <MessageCircle className="w-4 h-4" />
-                      {appointmentTypes.find(t => t.id === selectedType)?.title}
+                      {appointmentType.title}
                     </p>
                   </div>
                 </div>
