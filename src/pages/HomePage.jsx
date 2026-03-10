@@ -381,32 +381,64 @@ const faqs = [
 
 function FAQ() {
   return (
-    <section className="section-padding bg-neutral-50">
-      <div className="section-container max-w-3xl">
-        <AnimatedSection className="text-center mb-12">
-          <span className="badge badge-primary mb-4">FAQ</span>
-          <h2 className="section-title">Häufige Fragen</h2>
-        </AnimatedSection>
+    <section className="relative section-padding bg-neutral-50 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary-50/60 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
-        <div className="space-y-4">
-          {faqs.map((faq, i) => (
-            <AnimatedSection key={i} delay={i * 50}>
-              <FAQItem question={faq.q} answer={faq.a} />
-            </AnimatedSection>
-          ))}
+      <div className="section-container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Left: Sticky info panel */}
+          <AnimatedSection direction="left" className="lg:col-span-2">
+            <div className="lg:sticky lg:top-28">
+              <span className="badge badge-primary mb-4">FAQ</span>
+              <h2 className="section-title mb-4">Häufige Fragen</h2>
+              <p className="text-neutral-500 leading-relaxed mb-8">
+                Die wichtigsten Fragen — ehrlich und direkt beantwortet. Falls Ihre Frage nicht dabei ist, melden Sie sich einfach.
+              </p>
+
+              <FaqImage />
+
+              <Link to="/kontakt" className="btn-primary">
+                Eigene Frage stellen
+                <MessageCircle className="w-4 h-4" />
+              </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Right: FAQ items */}
+          <div className="lg:col-span-3 space-y-3">
+            {faqs.map((faq, i) => (
+              <AnimatedSection key={i} delay={i * 60}>
+                <FAQItem question={faq.q} answer={faq.a} />
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
-
-        <AnimatedSection className="text-center mt-10">
-          <p className="text-sm text-neutral-500 mb-4">
-            Noch eine Frage? Ich helfe gerne weiter.
-          </p>
-          <Link to="/kontakt" className="btn-primary">
-            Frage stellen
-            <MessageCircle className="w-4 h-4" />
-          </Link>
-        </AnimatedSection>
       </div>
     </section>
+  )
+}
+
+function FaqImage() {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) return null
+
+  return (
+    <div className="relative rounded-2xl overflow-hidden mb-8 shadow-lg">
+      <img
+        src="/images/faq.jpg"
+        alt="Häufige Fragen — Q&A"
+        className="w-full h-48 object-cover"
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-950/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-5">
+        <p className="text-white text-sm font-semibold">Fragen & Antworten</p>
+        <p className="text-primary-200 text-xs">Ehrlich und direkt beantwortet</p>
+      </div>
+    </div>
   )
 }
 
@@ -414,21 +446,23 @@ function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="bg-white rounded-2xl border border-neutral-100 overflow-hidden">
+    <div className={`rounded-2xl border overflow-hidden transition-all duration-300 ${open ? 'bg-white border-primary-200 shadow-md' : 'bg-white border-neutral-100 hover:border-primary-100'}`}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-neutral-50 transition-colors"
+        className="w-full flex items-center gap-4 p-5 text-left group"
       >
-        <span className="text-sm font-semibold text-neutral-900">{question}</span>
+        <span className={`text-sm font-semibold flex-1 transition-colors ${open ? 'text-primary-700' : 'text-neutral-900'}`}>
+          {question}
+        </span>
         <ChevronDown
-          className={`w-4 h-4 text-neutral-400 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 shrink-0 transition-all duration-300 ${open ? 'text-primary-600 rotate-180' : 'text-neutral-300'}`}
         />
       </button>
       <div
         className="overflow-hidden transition-all duration-300 ease-out"
         style={{ maxHeight: open ? '400px' : '0', opacity: open ? 1 : 0 }}
       >
-        <div className="px-6 pb-6 text-sm text-neutral-500 leading-relaxed border-t border-neutral-100 pt-4">
+        <div className="px-5 pb-5 text-sm text-neutral-500 leading-relaxed">
           {answer}
         </div>
       </div>
@@ -443,7 +477,7 @@ function CTABanner() {
       <div className="section-container">
         <AnimatedSection>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 p-10 lg:p-16 text-center">
-            <BgImage src="/images/hero-workspace.jpg" opacity="opacity-[0.10]" />
+            <BgImage src="/images/webentwicklung.jpg" opacity="opacity-[0.12]" />
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-400/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
             <div className="relative z-10">

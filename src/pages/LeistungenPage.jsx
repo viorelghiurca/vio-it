@@ -244,7 +244,7 @@ export default function LeistungenPage() {
         <div className="section-container">
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 to-primary-900 p-10 lg:p-16 text-center">
-              <BgImage src="/images/hero-workspace.jpg" opacity="opacity-[0.10]" />
+              <BgImage src="/images/webentwicklung.jpg" opacity="opacity-[0.12]" />
               <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold text-white mb-4">
