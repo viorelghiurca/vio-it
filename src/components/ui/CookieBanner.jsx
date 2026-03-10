@@ -10,11 +10,11 @@ export default function CookieBanner() {
   if (consent !== null) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6">
+    <div className="fixed bottom-0 inset-x-0 z-50 p-3 sm:p-6">
       <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden">
-        <div className="p-6">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center shrink-0 mt-0.5">
+        <div className="p-5 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center shrink-0">
               <Cookie className="w-5 h-5 text-primary-600" />
             </div>
             <div className="flex-1 min-w-0">
@@ -28,14 +28,14 @@ export default function CookieBanner() {
 
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-1.5 mt-2 text-xs font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                className="inline-flex items-center gap-1.5 mt-2 text-xs font-medium text-primary-600 hover:text-primary-700 transition-colors"
               >
                 {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                 {expanded ? 'Weniger anzeigen' : 'Details anzeigen'}
               </button>
 
               {expanded && (
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 space-y-3 text-left">
                   <div className="flex items-start gap-3 p-3 bg-neutral-50 rounded-xl">
                     <div className="mt-0.5">
                       <Shield className="w-4 h-4 text-accent-500" />
@@ -53,10 +53,10 @@ export default function CookieBanner() {
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-5">
+              <div className="mt-5">
                 <button
                   onClick={acceptAll}
-                  className="btn-primary flex-1 justify-center"
+                  className="btn-primary w-full sm:w-auto justify-center"
                 >
                   Akzeptieren
                 </button>
