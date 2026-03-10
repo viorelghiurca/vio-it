@@ -99,13 +99,25 @@ export default function DatenschutzPage() {
                   Sofern Sie Ihre Einwilligung über unseren Cookie-Banner erteilen (Art. 6 Abs. 1 lit. a DSGVO),
                   verwenden wir auf dieser Website Firebase Analytics, einen Webanalysedienst der Google Ireland Limited,
                   Gordon House, Barrow Street, Dublin 4, Irland („Google").
-                  Firebase Analytics erfasst anonymisierte Daten über die Nutzung unserer Website (z.B. besuchte Seiten,
+                </p>
+                <p className="mt-3">
+                  Firebase Analytics erfasst anonymisierte Daten über die Nutzung unserer Website (z.&nbsp;B. besuchte Seiten,
                   Verweildauer, Betriebssystem), um Berichte über die Website-Aktivitäten zu erstellen und
-                  das Nutzererlebnis zu verbessern. Ihre IP-Adresse wird dabei anonymisiert.
-                  Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.
-                  Google nimmt am EU-US Data Privacy Framework teil.
+                  das Nutzererlebnis zu verbessern. Die bei der Analyse verwendete Google Analytics 4 Technologie stellt
+                  sicher, dass Ihre <strong>IP-Adresse standardmäßig anonymisiert</strong> wird und eine direkte Zuordnung zu Ihrer Person
+                  ausgeschlossen ist.
+                </p>
+                <p className="mt-3">
+                  Die erzeugten Informationen können an einen Server von Google in den USA übertragen und dort gespeichert werden.
+                  Um die Sicherheit bei der Datenübermittlung zu gewährleisten, hat sich Google dem
+                  <strong>EU-US Data Privacy Framework</strong> zertifiziert. Dieser Angemessenheitsbeschluss der EU-Kommission
+                  bestätigt, dass für Datenübermittlungen an teilnehmende US-Unternehmen ein Datenschutzniveau besteht,
+                  das mit dem der EU vergleichbar ist.
+                </p>
+                <p className="mt-3">
                   Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Cookie-Einstellungen auf unserer Website ändern.
-                  Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Google Datenschutz</a>
+                  Weitere Informationen finden Sie in der Datenschutzerklärung von Google:
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline ml-1">policies.google.com/privacy</a>
                 </p>
 
                 <h3 className="text-sm font-semibold text-neutral-800 mt-4 mb-1">b) Web3Forms (Kontaktformular)</h3>
@@ -151,7 +163,7 @@ export default function DatenschutzPage() {
                 <p>
                   Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung.
                   Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers
-                  von „http://" auf „https://" wechselt. Wenn die SSL- bzw. TLS-Verschlüsselung
+                  von „http://" auf „https://"-Wechselt. Wenn die SSL- bzw. TLS-Verschlüsselung
                   aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
                 </p>
               </LegalSection>

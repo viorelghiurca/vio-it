@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Cookie, ChevronDown, ChevronUp, Shield } from 'lucide-react'
+import { Cookie, ChevronDown, ChevronUp, Shield, BarChart2 } from 'lucide-react'
 import { useCookieConsent } from '../../context/CookieContext'
 
 export default function CookieBanner() {
@@ -26,8 +26,8 @@ export default function CookieBanner() {
                 Datenschutz & Cookies
               </h3>
               <p className="text-sm text-neutral-500 leading-relaxed">
-                Wir verwenden ausschließlich technisch notwendige Cookies, um Ihnen die bestmögliche
-                Nutzererfahrung zu bieten. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.
+                Wir verwenden Cookies, um die Funktionalität unserer Website zu gewährleisten und mit Ihrer Zustimmung
+                die Nutzung zu analysieren, um Ihr Nutzererlebnis zu verbessern.
               </p>
 
               <button
@@ -51,6 +51,20 @@ export default function CookieBanner() {
                       </div>
                       <p className="text-xs text-neutral-500 mt-0.5">
                         Für die Grundfunktionen der Website erforderlich (Cookie-Einwilligung, Spam-Schutz).
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-neutral-50 rounded-xl">
+                    <div className="mt-0.5">
+                      <BarChart2 className="w-4 h-4 text-neutral-400" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-neutral-800">Analyse-Cookies</span>
+                        <span className="text-xs text-neutral-500 font-medium">Optional</span>
+                      </div>
+                      <p className="text-xs text-neutral-500 mt-0.5">
+                        Helfen uns zu verstehen, wie Besucher die Website nutzen, um sie zu verbessern (z.B. Google Analytics).
                       </p>
                     </div>
                   </div>

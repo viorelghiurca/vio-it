@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useCookieConsent } from '../../context/CookieContext'
 import SEOHead from '../../components/ui/SEOHead'
 import AnimatedSection from '../../components/ui/AnimatedSection'
-import { Shield, CheckCircle2 } from 'lucide-react'
+import { Shield, CheckCircle2, XCircle, BarChart2 } from 'lucide-react'
 
 function LegalSection({ title, children }) {
   return (
@@ -14,7 +14,8 @@ function LegalSection({ title, children }) {
 }
 
 export default function CookiePage() {
-  const { consent, acceptNecessary, resetConsent } = useCookieConsent()
+  const { consent, resetConsent } = useCookieConsent()
+  const hasConsented = consent !== null
 
   return (
     <>
@@ -39,35 +40,44 @@ export default function CookiePage() {
           <AnimatedSection>
             <div className="space-y-10 text-sm text-neutral-600 leading-relaxed">
 
-              {/* Current Consent Status */}
               <div className="p-5 bg-neutral-50 rounded-2xl border border-neutral-100">
                 <p className="text-sm font-semibold text-neutral-900 mb-4">Ihr aktueller Cookie-Status</p>
-                {consent ? (
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-4 py-2">
-                      <div className="flex items-center gap-2.5 text-sm text-neutral-700">
-                        <span className="text-neutral-400"><Shield className="w-4 h-4" /></span>
-                        Notwendige Cookies
-                      </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-4 py-2">
+                    <div className="flex items-center gap-2.5 text-sm text-neutral-700">
+                      <span className="text-neutral-400"><Shield className="w-4 h-4" /></span>
+                      Notwendige Cookies
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-accent-600">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      Immer aktiv
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 py-2 border-t border-neutral-200">
+                    <div className="flex items-center gap-2.5 text-sm text-neutral-700">
+                      <span className="text-neutral-400"><BarChart2 className="w-4 h-4" /></span>
+                      Analyse-Cookies
+                    </div>
+                    {hasConsented && consent.analytics ? (
                       <div className="flex items-center gap-1.5 text-xs font-medium text-accent-600">
                         <CheckCircle2 className="w-3.5 h-3.5" />
-                        Immer aktiv
+                        Aktiv
                       </div>
-                    </div>
+                    ) : (
+                      <div className="flex items-center gap-1.5 text-xs font-medium text-neutral-500">
+                        <XCircle className="w-3.5 h-3.5" />
+                        Inaktiv
+                      </div>
+                    )}
+                  </div>
+                  {hasConsented && (
                     <div className="flex gap-3 pt-3 border-t border-neutral-200">
                       <button onClick={resetConsent} className="text-xs text-neutral-500 hover:text-red-500 transition-colors">
-                        Einstellungen zurücksetzen
+                        Einwilligung ändern
                       </button>
                     </div>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    <p className="text-neutral-500 text-xs">Sie haben Ihre Cookie-Einstellungen noch nicht festgelegt.</p>
-                    <div className="flex gap-3">
-                      <button onClick={acceptNecessary} className="btn-primary text-xs">Akzeptieren</button>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
               <LegalSection title="Was sind Cookies?">
@@ -80,10 +90,11 @@ export default function CookiePage() {
 
               <LegalSection title="Welche Cookies verwenden wir?">
                 <p className="mb-4">
-                  Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine
-                  Tracking-, Analyse- oder Marketing-Cookies eingesetzt.
+                  Diese Website verwendet technisch notwendige und optionale Analyse-Cookies. Es werden keine
+                  Marketing-Cookies eingesetzt.
                 </p>
-                <div className="border border-neutral-200 rounded-xl overflow-hidden">
+                {/* Notwendige Cookies */}
+                <div className="border border-neutral-200 rounded-xl overflow-hidden mb-4">
                   <div className="flex items-center justify-between gap-3 px-4 py-3 bg-neutral-50 border-b border-neutral-200">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-accent-600" />
@@ -114,8 +125,45 @@ export default function CookiePage() {
                           </tr>
                           <tr>
                             <td className="py-2 pr-4 font-mono text-neutral-600">_lastSubmit_kontakt</td>
-                            <td className="py-2 pr-4 text-neutral-500">Spam-Schutz: verhindert mehrfaches Absenden des Kontaktformulars innerhalb von 60 Sekunden (localStorage)</td>
+                            <td className="py-2 pr-4 text-neutral-500">Spam-Schutz: verhindert mehrfaches Absenden (localStorage)</td>
                             <td className="py-2 text-neutral-500">60 Sekunden</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {/* Analyse Cookies */}
+                <div className="border border-neutral-200 rounded-xl overflow-hidden">
+                  <div className="flex items-center justify-between gap-3 px-4 py-3 bg-neutral-50 border-b border-neutral-200">
+                    <div className="flex items-center gap-2">
+                      <BarChart2 className="w-4 h-4 text-neutral-500" />
+                      <span className="text-sm font-semibold text-neutral-800">Analyse-Cookies</span>
+                    </div>
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-700">
+                      Optional
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-neutral-500 mb-4">
+                      Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern. Sie werden nur nach Ihrer expliziten Einwilligung gesetzt.
+                    </p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs">
+                        <thead>
+                          <tr className="text-left text-neutral-400 border-b border-neutral-100">
+                            <th className="pb-2 pr-4 font-medium">Dienst</th>
+                            <th className="pb-2 pr-4 font-medium">Zweck</th>
+                            <th className="pb-2 pr-4 font-medium">Cookies</th>
+                            <th className="pb-2 font-medium">Anbieter</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="py-2 pr-4 text-neutral-600">Firebase Analytics</td>
+                            <td className="py-2 pr-4 text-neutral-500">Erfasst anonymisierte Statistiken zur Seitennutzung</td>
+                            <td className="py-2 pr-4 text-neutral-500 font-mono text-xs">_ga, _ga_&lt;id&gt;</td>
+                            <td className="py-2 text-neutral-500">Google Ireland Limited</td>
                           </tr>
                         </tbody>
                       </table>
