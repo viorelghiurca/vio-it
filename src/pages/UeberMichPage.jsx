@@ -67,75 +67,53 @@ export default function UeberMichPage() {
 
       {/* Main Content */}
       <section className="section-padding bg-white">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-            {/* Photo Placeholder */}
-            <AnimatedSection direction="left">
-              <div className="relative">
-                <div className="aspect-[4/5] bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-3xl flex flex-col items-center justify-center border-2 border-dashed border-neutral-200">
-                  <div className="w-20 h-20 rounded-full bg-neutral-200 flex items-center justify-center mb-4">
-                    <Users className="w-10 h-10 text-neutral-400" />
-                  </div>
-                  <p className="text-sm text-neutral-400 font-medium">Foto folgt</p>
-                  <p className="text-xs text-neutral-300 mt-1">Viorel Ghiurca</p>
-                </div>
-
-                {/* Floating badge */}
-                <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-card border border-neutral-100 px-5 py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
-                      <Award className="w-5 h-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-neutral-900">IHK-zertifiziert</p>
-                      <p className="text-xs text-neutral-500">Fachinformatiker</p>
-                    </div>
-                  </div>
-                </div>
+        <div className="section-container max-w-3xl">
+          <AnimatedSection>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
+                <Award className="w-5 h-5 text-primary-600" />
               </div>
-            </AnimatedSection>
-
-            {/* Bio */}
-            <AnimatedSection direction="right">
-              <span className="badge badge-primary mb-4">Meine Geschichte</span>
-              <h2 className="text-3xl font-bold text-neutral-900 mb-6 tracking-tight">
-                IT mit Leidenschaft und Expertise
-              </h2>
-
-              <div className="space-y-4 text-neutral-600 leading-relaxed">
-                <p>
-                  Ich bin Viorel Ghiurca — IHK-geprüfter Fachinformatiker und Gründer von VIO-IT.
-                  Mit fundierter Ausbildung und praktischer Erfahrung in verschiedenen IT-Bereichen
-                  helfe ich kleinen und mittelständischen Unternehmen dabei, die Chancen der
-                  Digitalisierung wirklich zu nutzen.
-                </p>
-                <p>
-                  Meine Überzeugung: Gute IT ist kein Luxus für Großunternehmen. Auch kleine Betriebe
-                  verdienen moderne, zuverlässige und effiziente digitale Lösungen — zu fairen Preisen
-                  und mit persönlichem Service.
-                </p>
-                <p>
-                  Bei VIO-IT arbeite ich stets auf Augenhöhe mit meinen Kunden. Ich erkläre komplexe
-                  Themen verständlich, denke unternehmerisch mit und liefere Ergebnisse, die messbar
-                  Mehrwert schaffen.
-                </p>
+              <div>
+                <span className="badge badge-primary">Meine Geschichte</span>
               </div>
+            </div>
 
-              <div className="mt-8 p-5 bg-primary-50 rounded-2xl border border-primary-100">
-                <p className="text-sm font-semibold text-primary-800 mb-1">Mein Ansatz</p>
-                <p className="text-sm text-primary-700">
-                  Erst verstehen, dann lösen. Jedes Unternehmen ist einzigartig — deshalb bekommt
-                  jeder Kunde individuelle Lösungen statt Standardpakete.
-                </p>
-              </div>
+            <h2 className="text-3xl font-bold text-neutral-900 mb-6 tracking-tight">
+              IT mit Leidenschaft und Expertise
+            </h2>
 
-              <Link to="/kontakt" className="btn-primary btn-lg mt-8">
-                Jetzt Erstgespräch vereinbaren
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </AnimatedSection>
-          </div>
+            <div className="space-y-4 text-neutral-600 leading-relaxed">
+              <p>
+                Ich bin Viorel Ghiurca — IHK-geprüfter Fachinformatiker und Gründer von VIO-IT.
+                Mit fundierter Ausbildung und praktischer Erfahrung in verschiedenen IT-Bereichen
+                helfe ich kleinen und mittelständischen Unternehmen dabei, die Chancen der
+                Digitalisierung wirklich zu nutzen.
+              </p>
+              <p>
+                Meine Überzeugung: Gute IT ist kein Luxus für Großunternehmen. Auch kleine Betriebe
+                verdienen moderne, zuverlässige und effiziente digitale Lösungen — zu fairen Preisen
+                und mit persönlichem Service.
+              </p>
+              <p>
+                Bei VIO-IT arbeite ich stets auf Augenhöhe mit meinen Kunden. Ich erkläre komplexe
+                Themen verständlich, denke unternehmerisch mit und liefere Ergebnisse, die messbar
+                Mehrwert schaffen.
+              </p>
+            </div>
+
+            <div className="mt-8 p-5 bg-primary-50 rounded-2xl border border-primary-100">
+              <p className="text-sm font-semibold text-primary-800 mb-1">Mein Ansatz</p>
+              <p className="text-sm text-primary-700">
+                Erst verstehen, dann lösen. Jedes Unternehmen ist einzigartig — deshalb bekommt
+                jeder Kunde individuelle Lösungen statt Standardpakete.
+              </p>
+            </div>
+
+            <Link to="/kontakt" className="btn-primary btn-lg mt-8">
+              Jetzt Erstgespräch vereinbaren
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 
