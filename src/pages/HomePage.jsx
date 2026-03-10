@@ -91,9 +91,11 @@ function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-500 animate-bounce">
-        <span className="text-xs font-medium">Mehr erfahren</span>
-        <ChevronDown className="w-4 h-4" />
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center pointer-events-none">
+        <div className="flex flex-col items-center gap-2 text-neutral-500 animate-bounce">
+          <span className="text-xs font-medium">Mehr erfahren</span>
+          <ChevronDown className="w-4 h-4" />
+        </div>
       </div>
     </section>
   )
